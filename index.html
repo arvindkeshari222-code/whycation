@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHY-CATION by Crossroads Travels — Private Luxury Traveller & Curated Stranger Expeditions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Lenis Smooth Scroll Library -->
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                        hand: ['Caveat', 'cursive'],
+                    },
+                    colors: {
+                        oat: '#F9F6F0',
+                        linen: '#EFE9DE',
+                        milk: '#FFFFFF',
+                        obsidian: '#161412',
+                        forest: '#0F291E',
+                        sienna: '#C85228',
+                        gold: '#D4A359',
+                        sage: '#E2E6DF'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Lenis Smooth Scroll Setup */
+        html.lenis, html.lenis body {
+            height: auto;
+        }
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        body {
+            background-color: #F9F6F0;
+            color: #161412;
+            overflow-x: hidden;
+        }
+
+        /* Subtle Film Grain Texture for Tactile Luxury Feel */
+        .bg-grain {
+            background-image: radial-gradient(rgba(22, 20, 18, 0.05) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+
+        /* Scroll Reveal Animations */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Cursor Follower */
+        #cursorFollower {
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 84px;
+            height: 84px;
+            border-radius: 9999px;
+            background: #C85228;
+            color: #FAF7F2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 9999;
+            box-shadow: 0 15px 30px rgba(200, 82, 40, 0.35);
+        }
+        #cursorFollower.active {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* Luxury Card Hover */
+        .luxury-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(22, 20, 18, 0.08);
+            box-shadow: 0 24px 48px -18px rgba(22, 20, 18, 0.06);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .luxury-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 36px 70px -15px rgba(22, 20, 18, 0.13);
+            border-color: rgba(200, 82, 40, 0.35);
+        }
+
+        /* Hotspot Pulse */
+        @keyframes pulseRing {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(200, 82, 40, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 14px rgba(200, 82, 40, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(200, 82, 40, 0); }
+        }
+        .hotspot-dot {
+            animation: pulseRing 2s infinite;
+        }
+
+        /* Infinite Marquee */
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marqueeMove 32s linear infinite;
+        }
+        @keyframes marqueeMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Polaroid Card Tilt */
+        .polaroid-card:nth-child(odd) { transform: rotate(-1.5deg); }
+        .polaroid-card:nth-child(even) { transform: rotate(1.5deg); }
+        .polaroid-card:hover { transform: rotate(0deg) scale(1.03); z-index: 10; }
+
+        /* Scroll Progress Bar */
+        #scrollProgress {
+            transform-origin: 0%;
+        }
+    </style>
+</head>
+<body class="bg-oat bg-grain antialiased selection:bg-sienna selection:text-white">
+
+    <!-- Top Scroll Progress Bar -->
+    <div id="scrollProgress" class="fixed top-0 left-0 right-0 h-1 bg-sienna z-50 scale-x-0 transition-transform duration-75"></div>
+
+    <!-- Custom Magnetic Cursor for Destination Cards -->
+    <div id="cursorFollower" class="hidden lg:flex text-center leading-tight px-2">Explore<br>Edition</div>
+
+    <!-- Floating Direct WhatsApp Button (Bottom Right) -->
+    <a href="https://wa.me/918423411692?text=Hi%20Why-Cation%20(Crossroads%20Travels)!%20Mujhe%20aapki%20Luxury%20Traveller%20trips%20(Solo%20%2F%20Friends%20%2F%20Family)%20ki%20details%20chahiye." 
+       target="_blank" rel="noopener noreferrer"
+       class="fixed bottom-20 sm:bottom-6 right-5 z-40 bg-[#25D366] hover:bg-obsidian text-white p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-2xl flex items-center gap-2.5 transition-all duration-300 hover:scale-105 border border-white/20">
+        <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
+        <span class="hidden sm:inline text-xs font-extrabold uppercase tracking-wider">WhatsApp Captain</span>
+    </a>
+
+    <!-- Floating Quick Concierge Pill (Bottom Center) -->
+    <div class="fixed bottom-5 left-1/2 -translate-x-1/2 z-40 w-[92%] max-w-xl bg-obsidian/95 backdrop-blur-xl text-oat px-4 py-2.5 rounded-full shadow-2xl border border-white/15 flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2.5 pl-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <span class="text-[11px] sm:text-xs font-medium tracking-wide">
+                <strong class="text-amber-300">Next Departure:</strong> Friday 8:30 PM • Own Luxury Traveller
+            </span>
+        </div>
+        <div class="flex items-center gap-1.5">
+            <a href="#four-editions" class="hidden sm:inline-block px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white/10 hover:bg-white/20 transition">
+                4 Routes
+            </a>
+            <button onclick="openBookingDrawer('Priority Weekend Consultation')" class="px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-sienna hover:bg-amber-600 text-white transition flex items-center gap-1">
+                <span>Join Batch</span>
+                <i class="ph-bold ph-arrow-up-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-forest text-oat text-[11px] tracking-[0.18em] uppercase py-2.5 px-4 border-b border-obsidian/10">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+            <span class="font-semibold flex items-center gap-2">
+                <i class="ph-fill ph-sparkle text-amber-300"></i>
+                WHY-CATION BY CROSSROADS TRAVELS • INDIA’S FIRST PRIVATE TRAVELLER STRANGER CLUB
+            </span>
+            <div class="hidden md:flex items-center gap-5 text-oat/80">
+                <span>✦ 100% Own Luxury Vehicle (Zero Brokers)</span>
+                <span>✦ Solo Strangers • Friends • Family Charter</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================================ -->
+    <!-- UPGRADED HEADER: LEFT WHY-CATION LOGO + RIGHT NAVIGATION & ACTIONS           -->
+    <!-- ============================================================================ -->
+    <header class="sticky top-0 z-40 bg-oat/90 backdrop-blur-xl border-b border-obsidian/10 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between gap-4">
+            
+            <!-- FAR LEFT: WHY-CATION BRAND LOGO (CLEAN SPACING, ZERO OVERLAP) -->
+            <a href="#" class="flex items-center shrink-0 focus:outline-none group">
+                <!-- Loads your ./logo.jpg automatically if saved in folder -->
+                <img src="./logo.jpg" 
+                     alt="WHY-CATION — Strangers Today. Stories Forever." 
+                     class="h-14 sm:h-16 w-auto object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-[1.02]"
+                     onerror="this.style.display='none'; document.getElementById('whycation-fallback-logo').style.display='flex';">
+
+                <!-- High-Precision Vector Lockup (Zero Overlap) -->
+                <div id="whycation-fallback-logo" style="display: none;" class="items-center gap-3.5 select-none">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-sienna p-[2px] shadow-md shrink-0">
+                        <div class="w-full h-full bg-milk rounded-[14px] flex items-center justify-center">
+                            <svg class="w-11 h-11" viewBox="0 0 100 85" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 45 L24 70 L38 48 L52 70 C62 50 74 30 92 22" stroke="#F2851D" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M52 70 C62 50 74 30 92 22" stroke="#FAF8F5" stroke-width="1.8" stroke-dasharray="4 4"/>
+                                <g transform="translate(54, 4) rotate(-10)">
+                                    <rect x="0" y="4" width="34" height="14" rx="3" fill="#0F291E"/>
+                                    <rect x="3" y="6.5" width="5.5" height="4.5" rx="1" fill="#F9F6F0"/>
+                                    <rect x="10.5" y="6.5" width="5.5" height="4.5" rx="1" fill="#F9F6F0"/>
+                                    <rect x="18" y="6.5" width="5.5" height="4.5" rx="1" fill="#F9F6F0"/>
+                                    <rect x="25.5" y="6.5" width="5.5" height="4.5" rx="1" fill="#F9F6F0"/>
+                                    <circle cx="8" cy="18" r="3" fill="#0F291E" stroke="#F9F6F0" stroke-width="1.2"/>
+                                    <circle cx="26" cy="18" r="3" fill="#0F291E" stroke="#F9F6F0" stroke-width="1.2"/>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-center">
+                        <div class="flex items-center text-2xl sm:text-[27px] font-extrabold tracking-tight text-obsidian leading-none">
+                            <span>WHY</span>
+                            <span class="inline-flex items-center justify-center w-5 h-2 mx-1 bg-gradient-to-r from-amber-500 to-sienna rounded-sm">
+                                <span class="w-3.5 border-t border-dashed border-white"></span>
+                            </span>
+                            <span>CATION</span>
+                        </div>
+                        <span class="text-[9px] sm:text-[9.5px] font-extrabold tracking-[0.16em] text-sienna mt-1 uppercase">
+                            STRANGERS TODAY. STORIES FOREVER.
+                        </span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- FAR RIGHT: NAVIGATION LINKS + ACTION BUTTONS -->
+            <div class="flex items-center gap-5 xl:gap-8">
+                <nav class="hidden lg:flex items-center gap-6 xl:gap-7 text-xs font-bold uppercase tracking-[0.14em] text-obsidian/75">
+                    <a href="#24hours-vibe" class="hover:text-sienna transition">The Vibe</a>
+                    <a href="#four-editions" class="hover:text-sienna transition">4 Curated Routes</a>
+                    <a href="#batch-calendar" class="hover:text-sienna transition">Batch Calendar</a>
+                    <a href="#cruiser-hotspots" class="hover:text-sienna transition">Our Traveller</a>
+                    <a href="#polaroid-wall" class="hover:text-sienna transition">Tribe Stories</a>
+                </nav>
+
+                <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+                    <a href="tel:+918423411692" class="hidden xl:flex items-center gap-1.5 text-xs font-extrabold text-obsidian hover:text-sienna transition px-2">
+                        <i class="ph-fill ph-phone-call text-sienna"></i>
+                        <span>+91 84234 11692</span>
+                    </a>
+                    <button onclick="openVibeQuiz()" class="hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-full bg-linen hover:bg-obsidian hover:text-white text-obsidian text-xs font-bold uppercase tracking-wider transition border border-obsidian/10">
+                        <i class="ph-fill ph-compass text-sienna text-sm"></i>
+                        <span>Find My Trip</span>
+                    </button>
+                    <button onclick="openBookingDrawer('Direct Traveller Reservation')" class="bg-obsidian hover:bg-sienna text-oat px-5 sm:px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition flex items-center gap-2 shadow-md">
+                        <span>Book Spot</span>
+                        <i class="ph-bold ph-arrow-right text-sm"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- ============================================================================ -->
+    <!-- ORIGINAL HERO SECTION (100% PRESERVED + SCENE SWITCHER ENHANCEMENT)          -->
+    <!-- ============================================================================ -->
+    <section class="relative pt-10 pb-20 lg:pt-16 lg:pb-28 border-b border-obsidian/10 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Editorial Column -->
+                <div class="lg:col-span-7 space-y-7 reveal-up">
+                    <div class="inline-flex flex-wrap items-center gap-2.5 px-4 py-1.5 rounded-full bg-milk border border-obsidian/10 shadow-sm">
+                        <span class="px-2.5 py-0.5 rounded-full bg-forest text-oat text-[10px] font-extrabold uppercase tracking-widest">2026 Season</span>
+                        <span class="text-xs font-semibold text-obsidian/80">Own Private Luxury Traveller • 4 Handpicked Routes</span>
+                    </div>
+
+                    <h1 class="font-serif text-5xl sm:text-7xl lg:text-[84px] leading-[0.94] font-semibold text-obsidian tracking-tight">
+                        Don’t wait for friends. <br>
+                        <span class="italic font-normal text-sienna">Board with strangers,</span> return with a tribe.
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-obsidian/75 max-w-xl leading-relaxed">
+                        Dosto ke plans cancel hote rehte hain — aapki zindagi nahi rukni chahiye. Humari <strong>khud ki Chauffeur-Driven Luxury Traveller</strong> me har hafte 12 strangers, small friend groups, ya private families India ke <strong>4 sabse khoobsurat routes</strong> par nikalte hain.
+                    </p>
+
+                    <!-- Interactive Travel Mode Selector -->
+                    <div class="bg-milk p-4 sm:p-5 rounded-3xl border border-obsidian/10 shadow-lg max-w-xl">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[11px] font-extrabold uppercase tracking-widest text-obsidian/60">Select Your Travel Mode To Preview Experience:</span>
+                            <span class="font-hand text-xl text-sienna font-bold">Tap below ↴</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button onclick="setHeroMode('solo')" id="hMode-solo" class="py-3 px-3 rounded-2xl text-xs font-extrabold uppercase tracking-wider bg-forest text-oat transition shadow-sm">
+                                🙋‍♂️ Solo Stranger
+                            </button>
+                            <button onclick="setHeroMode('friends')" id="hMode-friends" class="py-3 px-3 rounded-2xl text-xs font-extrabold uppercase tracking-wider bg-linen/70 text-obsidian/75 hover:bg-linen transition">
+                                🥂 Friends Trio
+                            </button>
+                            <button onclick="setHeroMode('family')" id="hMode-family" class="py-3 px-3 rounded-2xl text-xs font-extrabold uppercase tracking-wider bg-linen/70 text-obsidian/75 hover:bg-linen transition">
+                                🚐 Family Charter
+                            </button>
+                        </div>
+                        <div id="heroModeBox" class="mt-3.5 p-3.5 rounded-2xl bg-oat border border-obsidian/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                            <p class="text-xs text-obsidian/85 leading-relaxed">
+                                <strong class="text-forest">✦ 74% join completely solo!</strong> Age-matched 21–35 batch, zero-awkwardness highway ice-breakers, and verified female-safe luxury stays.
+                            </p>
+                            <a href="#four-editions" class="text-xs font-extrabold uppercase tracking-wider text-sienna whitespace-nowrap hover:underline">
+                                Check Batches &rarr;
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Trust Metrics -->
+                    <div class="grid grid-cols-3 gap-4 pt-3 max-w-lg">
+                        <div class="p-3.5 rounded-2xl bg-linen/60 border border-obsidian/5">
+                            <span class="font-serif text-3xl sm:text-4xl font-bold text-obsidian block">100%</span>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-obsidian/60">Own Luxury Fleet</span>
+                        </div>
+                        <div class="p-3.5 rounded-2xl bg-linen/60 border border-obsidian/5">
+                            <span class="font-serif text-3xl sm:text-4xl font-bold text-sienna block">04</span>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-obsidian/60">Masterpiece Circuits</span>
+                        </div>
+                        <div class="p-3.5 rounded-2xl bg-linen/60 border border-obsidian/5">
+                            <span class="font-serif text-3xl sm:text-4xl font-bold text-forest block">4.97★</span>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-obsidian/60">Tribe Love Score</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Interactive Visual Collage (Exact Original Frame + Scene Switcher) -->
+                <div class="lg:col-span-5 relative reveal-up">
+                    <div class="relative mx-auto max-w-md">
+                        <!-- Main Editorial Frame -->
+                        <div class="rounded-[38px] overflow-hidden border-[10px] border-white shadow-2xl aspect-[4/5] relative group">
+                            <img id="heroMainImg" src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1000&q=85" 
+                                 onerror="this.src='https://placehold.co/800x1000/EFE9DE/161412?text=Crossroads+Tribe'"
+                                 alt="Crossroads Stranger Group Bonding" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-obsidian/85 via-obsidian/20 to-transparent"></div>
+
+                            <!-- Top Live Tag -->
+                            <div class="absolute top-5 left-5 right-5 flex justify-between items-center">
+                                <span class="px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-obsidian text-[10px] font-extrabold uppercase tracking-widest">
+                                    ✦ Real Unscripted Moments
+                                </span>
+                                <span class="w-9 h-9 rounded-full bg-sienna text-white flex items-center justify-center shadow-lg">
+                                    <i class="ph-fill ph-music-notes"></i>
+                                </span>
+                            </div>
+
+                            <!-- Interactive Mini Scene Switcher Inside Hero Card -->
+                            <div class="absolute bottom-36 left-6 right-6 flex items-center gap-1.5">
+                                <button onclick="setHeroScene(0)" id="hScene-0" class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-sienna text-white shadow">Bonfire Night</button>
+                                <button onclick="setHeroScene(1)" id="hScene-1" class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-white/20 backdrop-blur-md text-white hover:bg-white/30 transition">Snow Peaks</button>
+                                <button onclick="setHeroScene(2)" id="hScene-2" class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-white/20 backdrop-blur-md text-white hover:bg-white/30 transition">Cruiser Cabin</button>
+                            </div>
+
+                            <!-- Bottom Caption -->
+                            <div class="absolute bottom-6 left-6 right-6 text-white">
+                                <p id="heroSubCaption" class="font-hand text-2xl text-amber-300">Midnight at Sissu Bonfire —</p>
+                                <p id="heroMainQuote" class="font-serif italic text-2xl leading-snug mt-0.5">
+                                    "Friday rat ko hum 12 anjaan log mile the. Monday subah ghar wapas aate waqt sabki aankhon me aansu the."
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Handwritten Polaroid Floating Card Left -->
+                        <div class="hidden sm:block absolute -left-12 -bottom-8 bg-white p-3.5 pb-5 rounded-2xl shadow-2xl border border-obsidian/10 w-52 -rotate-6 hover:rotate-0 transition duration-300">
+                            <img src="https://images.unsplash.com/photo-1539635278303-d4002c07eae3?auto=format&fit=crop&w=500&q=80" 
+                                 onerror="this.src='https://placehold.co/400x300/EFE9DE/161412?text=Roadtrip+Vibe'"
+                                 alt="Friends laughing" class="w-full h-28 object-cover rounded-xl">
+                            <p class="font-hand text-lg text-obsidian font-bold text-center mt-2 leading-none">Chai halt @ 3:00 AM ☕</p>
+                        </div>
+
+                        <!-- Own Vehicle Floating Stamp Right -->
+                        <div class="hidden sm:flex absolute -right-8 top-12 bg-forest text-oat p-4 rounded-3xl shadow-2xl border border-white/15 items-center gap-3 max-w-[215px]">
+                            <div class="w-11 h-11 rounded-2xl bg-amber-300 text-obsidian flex items-center justify-center shrink-0">
+                                <i class="ph-fill ph-steering-wheel text-2xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-extrabold uppercase tracking-wider text-amber-300">Own Luxury Cruiser</p>
+                                <p class="text-[11px] text-oat/80 leading-tight mt-0.5">No third-party broker buses. Ever.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Infinite Editorial Marquee -->
+    <div class="bg-linen py-4 border-b border-obsidian/10 overflow-hidden">
+        <div class="marquee-track flex items-center gap-12 text-xs font-extrabold uppercase tracking-[0.22em] text-obsidian/75">
+            <span>✦ 100% IN-HOUSE LUXURY TRAVELLER</span>
+            <span>✦ SOLO FEMALE VERIFIED SAFE BATCHES</span>
+            <span>✦ ZERO CRINGE ICE-BREAKERS</span>
+            <span>✦ MANALI • RISHIKESH • UDAIPUR • SPITI</span>
+            <span>✦ PRIVATE FAMILY CHARTERS AVAILABLE</span>
+            <span>✦ DAILY SEAT ROTATION POLICY</span>
+            <span>✦ 100% IN-HOUSE LUXURY TRAVELLER</span>
+            <span>✦ SOLO FEMALE VERIFIED SAFE BATCHES</span>
+            <span>✦ ZERO CRINGE ICE-BREAKERS</span>
+            <span>✦ MANALI • RISHIKESH • UDAIPUR • SPITI</span>
+        </div>
+    </div>
+
+    <!-- SIGNATURE SECTION: Interactive 24 Hours Mood Slider -->
+    <section id="24hours-vibe" class="py-20 lg:py-28 border-b border-obsidian/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6 reveal-up">
+                <div>
+                    <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-sienna">Experience The Unscripted Magic</span>
+                    <h2 class="font-serif text-4xl sm:text-6xl font-semibold text-obsidian mt-2 leading-tight">
+                        How Strangers Turn Into <span class="italic font-normal text-forest">Your Favourite People.</span>
+                    </h2>
+                </div>
+                <p class="text-sm text-obsidian/70 max-w-md leading-relaxed">
+                    Click through the 4 moments below to see what actually happens from the moment you step into our Luxury Traveller.
+                </p>
+            </div>
+
+            <!-- Interactive Time-of-Day Tabs -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8 reveal-up">
+                <button onclick="switchVibeMoment(0)" id="vibeTab-0" class="vibe-tab text-left p-5 rounded-3xl bg-obsidian text-oat transition shadow-lg">
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-amber-300 block">09:00 PM • Departure</span>
+                    <span class="font-serif text-2xl font-bold block mt-1">1. The First Hello</span>
+                </button>
+                <button onclick="switchVibeMoment(1)" id="vibeTab-1" class="vibe-tab text-left p-5 rounded-3xl bg-milk hover:bg-linen text-obsidian border border-obsidian/10 transition">
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-sienna block">01:30 AM • Highway</span>
+                    <span class="font-serif text-2xl font-bold block mt-1">2. Kulhad Chai & Jam</span>
+                </button>
+                <button onclick="switchVibeMoment(2)" id="vibeTab-2" class="vibe-tab text-left p-5 rounded-3xl bg-milk hover:bg-linen text-obsidian border border-obsidian/10 transition">
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-sienna block">04:30 PM • Mountain Peak</span>
+                    <span class="font-serif text-2xl font-bold block mt-1">3. Golden Hour Trails</span>
+                </button>
+                <button onclick="switchVibeMoment(3)" id="vibeTab-3" class="vibe-tab text-left p-5 rounded-3xl bg-milk hover:bg-linen text-obsidian border border-obsidian/10 transition">
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-sienna block">11:00 PM • Under Stars</span>
+                    <span class="font-serif text-2xl font-bold block mt-1">4. Bonfire Confessions</span>
+                </button>
+            </div>
+
+            <!-- Dynamic Story Showcase Stage -->
+            <div class="bg-milk rounded-[36px] p-6 sm:p-10 border border-obsidian/10 shadow-xl grid lg:grid-cols-12 gap-8 items-center reveal-up">
+                <div class="lg:col-span-6 overflow-hidden rounded-3xl aspect-[16/10] relative">
+                    <img id="vibeStageImg" src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1000&q=85" 
+                         onerror="this.src='https://placehold.co/900x600/EFE9DE/161412?text=Crossroads+Vibe'"
+                         alt="Vibe Stage" class="w-full h-full object-cover transition-all duration-700">
+                    <div class="absolute bottom-4 left-4 bg-obsidian/80 backdrop-blur-md text-oat px-4 py-1.5 rounded-full text-xs font-bold">
+                        <span id="vibeStageBadge">📍 Boarding Point • Scented Warm Cabin</span>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 space-y-5">
+                    <span id="vibeStageTime" class="px-3.5 py-1.5 rounded-full bg-linen text-forest text-xs font-extrabold uppercase tracking-widest">
+                        Hour 01 • Breaking The Ice
+                    </span>
+                    <h3 id="vibeStageTitle" class="font-serif text-3xl sm:text-5xl font-bold text-obsidian leading-tight">
+                        "Shuru ke 20 minute sab shant hote hain, phir..."
+                    </h3>
+                    <p id="vibeStageDesc" class="text-sm sm:text-base text-obsidian/75 leading-relaxed">
+                        Jaise hi aap humari Luxury Traveller me kadam rakhte hain, warm ambient lights aur coffee ki khushboo aapka darr khatam kar deti hai. Humara Trip Captain bina kisi awkwardness ke '2 Truths & 1 Lie' aur travel bingo shuru karwata hai — aur toll cross karne se pehle hi poori bus has rahi hoti hai.
+                    </p>
+                    <div class="pt-3 border-t border-obsidian/10 flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex items-center gap-2 text-xs font-bold text-forest">
+                            <i class="ph-fill ph-check-circle text-lg text-sienna"></i>
+                            <span id="vibeStagePerks">Welcome Kit • Hydration Bar • Ice-Breaker Cards</span>
+                        </div>
+                        <span class="font-hand text-2xl text-sienna font-bold">Zero awkwardness guaranteed!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The 4 Signature Domestic Expeditions -->
+    <section id="four-editions" class="py-20 lg:py-28 bg-linen/50 border-b border-obsidian/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6 reveal-up">
+                <div>
+                    <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-sienna">Strictly 4 Masterpiece Routes</span>
+                    <h2 class="font-serif text-4xl sm:text-6xl font-semibold text-obsidian mt-2">
+                        Four Destinations. <span class="italic font-normal text-forest">Perfected By Us.</span>
+                    </h2>
+                    <p class="text-sm text-obsidian/70 mt-2 max-w-xl">
+                        Hum 50 jagah ki bheed nahi lagate. Humari apni Luxury Traveller sirf in 4 handpicked domestic circuits par chalti hai — jahan har boutique stay, secret viewpoint aur cafe humara khud ka test kiya hua hai.
+                    </p>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterTrips('all', this)" class="trip-filter px-5 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-forest text-oat transition">
+                        All 4 Routes
+                    </button>
+                    <button onclick="filterTrips('stranger', this)" class="trip-filter px-5 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-milk text-obsidian border border-obsidian/10 hover:bg-linen transition">
+                        Solo Stranger Hits
+                    </button>
+                    <button onclick="filterTrips('family', this)" class="trip-filter px-5 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-milk text-obsidian border border-obsidian/10 hover:bg-linen transition">
+                        Family & Friends Favorites
+                    </button>
+                </div>
+            </div>
+
+            <!-- 4 Destination Cards Grid -->
+            <div id="expeditionsGrid" class="grid lg:grid-cols-2 gap-10">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- NEW PRO SECTION: LIVE UPCOMING BATCH CALENDAR & TRIBE MIX TRACKER            -->
+    <!-- ============================================================================ -->
+    <section id="batch-calendar" class="py-20 lg:py-28 border-b border-obsidian/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 reveal-up">
+                <div>
+                    <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-sienna">Real-Time Seat & Ratio Tracker</span>
+                    <h2 class="font-serif text-4xl sm:text-6xl font-semibold text-obsidian mt-2">
+                        Upcoming <span class="italic font-normal text-forest">Departure Calendar.</span>
+                    </h2>
+                    <p class="text-sm text-obsidian/70 mt-2 max-w-xl">
+                        Dekhiye kis weekend batch me kitne Solo Strangers, Solo Females aur Friends Squads pehle se book kar chuke hain:
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterBatchCalendar('all', this)" class="cal-tab px-5 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-obsidian text-oat transition">All Batches</button>
+                    <button onclick="filterBatchCalendar('nov', this)" class="cal-tab px-5 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-milk text-obsidian border border-obsidian/10 hover:bg-linen transition">November</button>
+                    <button onclick="filterBatchCalendar('dec', this)" class="cal-tab px-5 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-milk text-obsidian border border-obsidian/10 hover:bg-linen transition">Dec (Xmas & NYE)</button>
+                    <button onclick="filterBatchCalendar('jan', this)" class="cal-tab px-5 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-milk text-obsidian border border-obsidian/10 hover:bg-linen transition">January Snow</button>
+                </div>
+            </div>
+
+            <div id="batchCalendarGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 reveal-up">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SIGNATURE SECTION: Interactive Luxury Traveller Hotspots + Calculator -->
+    <section id="cruiser-hotspots" class="py-20 lg:py-28 bg-forest text-oat relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Interactive Vehicle Showcase -->
+                <div class="lg:col-span-7 space-y-6 reveal-up">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-amber-300 text-xs font-bold uppercase tracking-widest">
+                        <i class="ph-fill ph-crown"></i>
+                        <span>Why We Never Rent Broker Buses</span>
+                    </div>
+
+                    <h2 class="font-serif text-4xl sm:text-6xl font-semibold leading-tight">
+                        Step inside our own <span class="italic font-normal text-amber-300">Private Overland Cruiser.</span>
+                    </h2>
+
+                    <p class="text-sm sm:text-base text-oat/80 leading-relaxed max-w-2xl">
+                        95% travel companies last minute kisi local agent se purani gaadi mangwati hain. <strong>WHY-CATION (Crossroads Travels) ke pass apni khud ki custom-crafted Luxury Traveller hai.</strong> Niche photo ke glowing points par click karke dekhiye humari gaadi me kya khaas hai:
+                    </p>
+
+                    <!-- Interactive Image with Clickable Hotspots -->
+                    <div class="relative rounded-[32px] overflow-hidden border-4 border-white/15 shadow-2xl aspect-[16/10] group">
+                        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=85" 
+                             onerror="this.src='https://placehold.co/1000x600/143328/FAF7F2?text=Crossroads+Luxury+Traveller'"
+                             alt="Luxury Traveller Cabin Experience" class="w-full h-full object-cover brightness-90">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/20 to-transparent"></div>
+
+                        <!-- Hotspot 1: Recliner -->
+                        <button onclick="selectHotspot(0)" style="top: 38%; left: 26%;" class="hotspot-dot absolute w-9 h-9 rounded-full bg-sienna text-white font-extrabold text-xs flex items-center justify-center border-2 border-white shadow-xl hover:scale-110 transition">
+                            1
+                        </button>
+                        <!-- Hotspot 2: Acoustic Audio & Lighting -->
+                        <button onclick="selectHotspot(1)" style="top: 22%; left: 55%;" class="hotspot-dot absolute w-9 h-9 rounded-full bg-amber-400 text-obsidian font-extrabold text-xs flex items-center justify-center border-2 border-white shadow-xl hover:scale-110 transition">
+                            2
+                        </button>
+                        <!-- Hotspot 3: Hydration & Charging -->
+                        <button onclick="selectHotspot(2)" style="top: 58%; left: 68%;" class="hotspot-dot absolute w-9 h-9 rounded-full bg-sienna text-white font-extrabold text-xs flex items-center justify-center border-2 border-white shadow-xl hover:scale-110 transition">
+                            3
+                        </button>
+                        <!-- Hotspot 4: Hill Captain -->
+                        <button onclick="selectHotspot(3)" style="top: 45%; left: 84%;" class="hotspot-dot absolute w-9 h-9 rounded-full bg-emerald-400 text-obsidian font-extrabold text-xs flex items-center justify-center border-2 border-white shadow-xl hover:scale-110 transition">
+                            4
+                        </button>
+
+                        <!-- Active Hotspot Info Bar Inside Image -->
+                        <div class="absolute bottom-4 left-4 right-4 bg-obsidian/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl border border-white/15 flex items-center justify-between gap-4">
+                            <div>
+                                <span id="hsTag" class="text-[10px] font-extrabold uppercase tracking-widest text-amber-300 block">FEATURE 01 • TAP DOTS ABOVE TO EXPLORE</span>
+                                <h4 id="hsTitle" class="font-serif text-xl sm:text-2xl font-bold text-white mt-0.5">180° Maharaja Cloud Loungers</h4>
+                                <p id="hsDesc" class="text-xs text-oat/80 mt-1">Extra legroom, calf-support & hotel-grade fresh linen blankets so overnight mountain climbs feel like business class.</p>
+                            </div>
+                            <i class="ph-duotone ph-armchair text-4xl text-amber-300 shrink-0 hidden sm:block"></i>
+                        </div>
+                    </div>
+
+                    <!-- Broker Bus vs Own Cruiser Quick Matrix -->
+                    <div class="grid sm:grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 rounded-2xl bg-white/10 border border-white/15">
+                            <p class="text-xs font-extrabold uppercase tracking-wider text-amber-300">✓ Our Own Luxury Traveller</p>
+                            <p class="text-xs text-oat/80 mt-1">Daily seat rotation policy, pushback Maharaja loungers, studio sound & permanent hill captain.</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+                            <p class="text-xs font-extrabold uppercase tracking-wider text-oat/50">✕ Typical Broker Agencies</p>
+                            <p class="text-xs text-oat/60 mt-1">Last-minute rented vans, cramped seats, broken AC/heaters & commission stops.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Instant Trip & Charter Fare Estimator -->
+                <div class="lg:col-span-5 reveal-up">
+                    <div class="bg-oat text-obsidian rounded-[36px] p-6 sm:p-9 shadow-2xl border border-obsidian/10">
+                        <div class="flex items-center justify-between border-b border-obsidian/10 pb-4 mb-5">
+                            <div>
+                                <span class="text-[10px] font-extrabold uppercase tracking-widest text-sienna">Instant Fare Estimator</span>
+                                <h3 class="font-serif text-3xl font-bold text-obsidian mt-0.5">Calculate Your Trip</h3>
+                            </div>
+                            <span class="font-hand text-2xl text-forest font-bold">Zero Hidden Costs</span>
+                        </div>
+
+                        <div class="space-y-5">
+                            <div>
+                                <label class="block text-xs font-extrabold uppercase tracking-wider text-obsidian/70 mb-2">1. Pick From Our 4 Destinations</label>
+                                <select id="calcRoute" onchange="updateCalculator()" class="w-full bg-milk border border-obsidian/15 rounded-2xl px-4 py-3.5 text-sm font-bold text-obsidian focus:outline-none focus:border-sienna">
+                                    <option value="Manali • Sissu • Kasol" data-solo="11999" data-charter="112000">01. Manali • Kasol • Sissu Valley (5D/4N)</option>
+                                    <option value="Rishikesh • Chopta • Tungnath" data-solo="8499" data-charter="79000">02. Rishikesh • Chopta • Tungnath (4D/3N)</option>
+                                    <option value="Udaipur • Kumbhalgarh • Mount Abu" data-solo="10499" data-charter="96000">03. Udaipur • Mount Abu Royal Trail (4D/3N)</option>
+                                    <option value="Spiti Valley • Chandratal Circuit" data-solo="18999" data-charter="168000">04. Spiti Valley • Chandratal Odyssey (7D/6N)</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-extrabold uppercase tracking-wider text-obsidian/70 mb-2">2. Travelling Style</label>
+                                <div class="grid grid-cols-3 gap-2">
+                                    <button type="button" onclick="setCalcStyle('solo')" id="cStyle-solo" class="c-style-btn py-3 px-2 rounded-2xl text-xs font-extrabold bg-forest text-oat transition">
+                                        Solo Stranger
+                                    </button>
+                                    <button type="button" onclick="setCalcStyle('friends')" id="cStyle-friends" class="c-style-btn py-3 px-2 rounded-2xl text-xs font-extrabold bg-linen text-obsidian hover:bg-obsidian/10 transition">
+                                        Friends (4+)
+                                    </button>
+                                    <button type="button" onclick="setCalcStyle('family')" id="cStyle-family" class="c-style-btn py-3 px-2 rounded-2xl text-xs font-extrabold bg-linen text-obsidian hover:bg-obsidian/10 transition">
+                                        Full Bus Family
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Interactive Group Size Slider -->
+                            <div id="paxSliderWrap" class="bg-linen/60 p-4 rounded-2xl border border-obsidian/10">
+                                <div class="flex justify-between text-xs font-bold mb-2">
+                                    <span class="text-obsidian/70">Number of Travellers:</span>
+                                    <span id="paxCountDisplay" class="text-sienna font-extrabold">1 Solo Guest</span>
+                                </div>
+                                <input type="range" id="paxRange" min="1" max="12" value="1" oninput="updateCalculator()" class="w-full accent-sienna cursor-pointer">
+                            </div>
+
+                            <!-- Dynamic Price Output -->
+                            <div class="bg-milk rounded-3xl p-5 border border-obsidian/10 shadow-sm">
+                                <div class="flex items-center justify-between">
+                                    <span id="calcBadge" class="text-[10px] font-extrabold uppercase tracking-widest text-sienna">All-Inclusive Solo Spot</span>
+                                    <span class="text-[11px] font-bold text-forest bg-sage px-2.5 py-0.5 rounded-full">✓ Own Luxury Traveller</span>
+                                </div>
+                                <div class="flex items-baseline gap-2 mt-2">
+                                    <span id="calcTotal" class="font-serif text-4xl sm:text-5xl font-bold text-obsidian">₹11,999</span>
+                                    <span id="calcPerText" class="text-xs font-semibold text-obsidian/60">total for 1 guest</span>
+                                </div>
+                                <p id="calcPerks" class="text-xs text-obsidian/70 mt-2 leading-relaxed">
+                                    Includes Luxury Traveller transit, handpicked boutique stays, breakfast & dinner, bonfire jams, and trip captain.
+                                </p>
+                                <button onclick="bookCalculatedPlan()" class="mt-4 w-full bg-sienna hover:bg-obsidian text-white font-bold py-4 rounded-2xl text-xs uppercase tracking-widest transition shadow-lg flex items-center justify-center gap-2">
+                                    <span>Lock This Quote & Get Itinerary</span>
+                                    <i class="ph-bold ph-whatsapp-logo text-base"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Polaroid Scrapbook Wall & Verified Reviews -->
+    <section id="polaroid-wall" class="py-20 lg:py-28 border-b border-obsidian/10 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6 reveal-up">
+                <div>
+                    <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-sienna">Real Humans • Unfiltered Memories</span>
+                    <h2 class="font-serif text-4xl sm:text-6xl font-semibold text-obsidian mt-2">
+                        The WHY-CATION <span class="italic font-normal text-sienna">Scrapbook.</span>
+                    </h2>
+                    <p class="text-sm text-obsidian/70 mt-2">
+                        Dekhiye humare solo strangers, friend squads aur families ne humari Luxury Traveller me kaisa mehsoos kiya.
+                    </p>
+                </div>
+
+                <button onclick="toggleReviewModal(true)" class="self-start md:self-auto bg-obsidian hover:bg-sienna text-oat font-bold px-6 py-3.5 rounded-full text-xs uppercase tracking-widest flex items-center gap-2 shadow-md transition">
+                    <i class="ph-bold ph-camera-plus text-amber-300 text-base"></i>
+                    <span>Add Your Polaroid Review</span>
+                </button>
+            </div>
+
+            <!-- Polaroid Photo Strip -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16 reveal-up">
+                <div class="polaroid-card bg-white p-3.5 pb-6 rounded-2xl shadow-xl border border-obsidian/10 transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80" 
+                         onerror="this.src='https://placehold.co/500x400/EFE9DE/161412?text=Manali+Batch'"
+                         alt="Manali Batch" class="w-full h-48 object-cover rounded-xl">
+                    <p class="font-hand text-2xl text-obsidian font-bold text-center mt-3">"12 Strangers @ Sissu Lake ❄️"</p>
+                    <p class="text-[10px] text-center uppercase tracking-widest text-obsidian/50 font-bold">Winter Batch • Manali</p>
+                </div>
+                <div class="polaroid-card bg-white p-3.5 pb-6 rounded-2xl shadow-xl border border-obsidian/10 transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" 
+                         onerror="this.src='https://placehold.co/500x400/EFE9DE/161412?text=Chopta+Trek'"
+                         alt="Chopta Batch" class="w-full h-48 object-cover rounded-xl">
+                    <p class="font-hand text-2xl text-obsidian font-bold text-center mt-3">"Tungnath Summit Hugs 🏔️"</p>
+                    <p class="text-[10px] text-center uppercase tracking-widest text-obsidian/50 font-bold">Solo + Friends • Chopta</p>
+                </div>
+                <div class="polaroid-card bg-white p-3.5 pb-6 rounded-2xl shadow-xl border border-obsidian/10 transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=600&q=80" 
+                         onerror="this.src='https://placehold.co/500x400/EFE9DE/161412?text=Udaipur+Family'"
+                         alt="Udaipur Sunset" class="w-full h-48 object-cover rounded-xl">
+                    <p class="font-hand text-2xl text-obsidian font-bold text-center mt-3">"Sharma Family Charter 👑"</p>
+                    <p class="text-[10px] text-center uppercase tracking-widest text-obsidian/50 font-bold">Private Bus • Udaipur</p>
+                </div>
+                <div class="polaroid-card bg-white p-3.5 pb-6 rounded-2xl shadow-xl border border-obsidian/10 transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=600&q=80" 
+                         onerror="this.src='https://placehold.co/500x400/EFE9DE/161412?text=Spiti+Odyssey'"
+                         alt="Spiti Stars" class="w-full h-48 object-cover rounded-xl">
+                    <p class="font-hand text-2xl text-obsidian font-bold text-center mt-3">"Postcards from 14,567 ft 📮"</p>
+                    <p class="text-[10px] text-center uppercase tracking-widest text-obsidian/50 font-bold">Spiti Moon Lake Circuit</p>
+                </div>
+            </div>
+
+            <!-- Verified Written Guestbook Grid -->
+            <div id="reviewsGrid" class="grid md:grid-cols-3 gap-8 reveal-up">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Honest Comparison & FAQ Section -->
+    <section class="py-20 bg-linen/40 border-b border-obsidian/10">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal-up">
+                <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-sienna">Clear Doubts Before Boarding</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-semibold text-obsidian mt-2">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4 reveal-up">
+                <details class="luxury-card rounded-3xl p-6 group cursor-pointer" open>
+                    <summary class="font-serif text-xl sm:text-2xl font-bold text-obsidian flex justify-between items-center list-none">
+                        <span>1. Main bilkul akele (Solo Stranger) aana chahta/chahti hoon. Kya main awkward feel karunga?</span>
+                        <i class="ph-bold ph-plus text-sienna group-open:rotate-45 transition text-xl"></i>
+                    </summary>
+                    <p class="text-sm text-obsidian/75 mt-3 leading-relaxed">
+                        Bilkul nahi! Humare har batch me 70% se zyada log akele hi aate hain. Humara Trip Captain boarding ke pehle ghante se hi ice-breaker games, music jamming aur team activities karwata hai. Pehle chai halt tak sab ek-dusre ke best friends ban chuke hote hain.
+                    </p>
+                </details>
+
+                <details class="luxury-card rounded-3xl p-6 group cursor-pointer">
+                    <summary class="font-serif text-xl sm:text-2xl font-bold text-obsidian flex justify-between items-center list-none">
+                        <span>2. Aapki khud ki Traveller hone se hume kya fark padta hai?</span>
+                        <i class="ph-bold ph-plus text-sienna group-open:rotate-45 transition text-xl"></i>
+                    </summary>
+                    <p class="text-sm text-obsidian/75 mt-3 leading-relaxed">
+                        Aam travel agencies broker se sasti tempo traveller uthati hain jisme seat tooti hoti hai ya driver rude hota hai. Kyunki yeh <strong>WHY-CATION (Crossroads Travels) ki apni khud ki Luxury Traveller hai</strong>, isme pushback comfort, AC/Heater, studio sound system, curtains aur pahado ke expert captain ki 100% humari guarantee rehti hai.
+                    </p>
+                </details>
+
+                <details class="luxury-card rounded-3xl p-6 group cursor-pointer">
+                    <summary class="font-serif text-xl sm:text-2xl font-bold text-obsidian flex justify-between items-center list-none">
+                        <span>3. Kya hum apni Family ya Friends ke liye puri Traveller Private book kar sakte hain?</span>
+                        <i class="ph-bold ph-plus text-sienna group-open:rotate-45 transition text-xl"></i>
+                    </summary>
+                    <p class="text-sm text-obsidian/75 mt-3 leading-relaxed">
+                        Haan! Agar aap 8–12 family members ya friends hain, toh aap humari puri Luxury Traveller ko <strong>Private Charter</strong> par book kar sakte hain. Isme aapke ghar ke darwaze se pickup hoga aur itinerary aapke hisaab se chalegi.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- UPGRADED PRO 5-COLUMN MAGAZINE MEGA-FOOTER                                   -->
+    <!-- ============================================================================ -->
+    <footer class="bg-oat pt-20 pb-32 text-obsidian border-t border-obsidian/10 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <!-- Pre-Footer WhatsApp Itinerary Dossier Banner -->
+            <div class="bg-forest text-oat rounded-[36px] p-8 sm:p-12 mb-16 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8 border border-white/10">
+                <div class="space-y-2 max-w-2xl">
+                    <span class="text-[11px] font-extrabold uppercase tracking-[0.22em] text-amber-300">2026–27 Expedition Lookbook</span>
+                    <h3 class="font-serif text-3xl sm:text-5xl font-semibold leading-tight">
+                        Get All 4 Route PDFs & Cruiser Videos on WhatsApp.
+                    </h3>
+                    <p class="text-xs sm:text-sm text-oat/75">
+                        Direct day-by-day itinerary, boutique stay photos, and real cabin footage of our 12+1 Luxury Maharaja Traveller.
+                    </p>
+                </div>
+                <a href="https://wa.me/918423411692?text=Hi%20Why-Cation!%20Please%20send%20me%20the%204%20Route%20PDF%20Dossiers%20and%20Luxury%20Traveller%20videos." 
+                   target="_blank"
+                   class="bg-sienna hover:bg-amber-500 text-white px-8 py-4 rounded-full text-xs font-extrabold uppercase tracking-widest transition shadow-xl flex items-center gap-2.5 shrink-0">
+                    <i class="ph-fill ph-whatsapp-logo text-xl"></i>
+                    <span>Get Dossier on WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- 5-Column Architectural Footer Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-14 border-b border-obsidian/10">
+                
+                <!-- Col 1: Brand Identity (4 cols) -->
+                <div class="lg:col-span-4 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <span class="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-obsidian">
+                            WHY-CATION <span class="italic font-normal text-sienna text-2xl">by Crossroads</span>
+                        </span>
+                    </div>
+                    <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-sienna">
+                        STRANGERS TODAY. STORIES FOREVER.
+                    </p>
+                    <p class="text-sm text-obsidian/70 leading-relaxed max-w-sm">
+                        India’s premier overland travel collective with our own in-house 12+1 Luxury Maharaja Tempo Traveller. Crafted for solo strangers, friend squads, and private families across 4 iconic domestic circuits.
+                    </p>
+                    <div class="flex flex-wrap gap-2 pt-1 text-[11px] font-extrabold text-forest">
+                        <span class="px-3.5 py-1.5 rounded-full bg-linen">✓ 100% Own Luxury Fleet</span>
+                        <span class="px-3.5 py-1.5 rounded-full bg-linen">✓ Verified Female Safe</span>
+                    </div>
+                </div>
+
+                <!-- Col 2: 4 Signature Editions (3 cols) -->
+                <div class="lg:col-span-3 space-y-2.5 text-sm">
+                    <p class="text-xs font-extrabold uppercase tracking-widest text-sienna mb-3">Our 4 Signature Editions</p>
+                    <p onclick="openItineraryModal('manali')" class="cursor-pointer hover:text-sienna transition font-medium">01. Manali • Old Kasol • Sissu Snow</p>
+                    <p onclick="openItineraryModal('rishikesh')" class="cursor-pointer hover:text-sienna transition font-medium">02. Rishikesh • Chopta • Tungnath</p>
+                    <p onclick="openItineraryModal('udaipur')" class="cursor-pointer hover:text-sienna transition font-medium">03. Udaipur • Kumbhalgarh • Mt. Abu</p>
+                    <p onclick="openItineraryModal('spiti')" class="cursor-pointer hover:text-sienna transition font-medium">04. Spiti Valley • Chandratal Lake</p>
+                </div>
+
+                <!-- Col 3: Travel Styles & Policies (2 cols) -->
+                <div class="lg:col-span-2 space-y-2.5 text-sm">
+                    <p class="text-xs font-extrabold uppercase tracking-widest text-sienna mb-3">Travel Modes</p>
+                    <a href="#four-editions" class="block hover:text-sienna transition font-medium">Solo Stranger Batches</a>
+                    <a href="#four-editions" class="block hover:text-sienna transition font-medium">Solo Female Safe Trips</a>
+                    <a href="#cruiser-hotspots" class="block hover:text-sienna transition font-medium">Friends Trio (8% Off)</a>
+                    <a href="#cruiser-hotspots" class="block hover:text-sienna transition font-medium">Family Bus Charter</a>
+                </div>
+
+                <!-- Col 4: Direct Captain Desk (3 cols) -->
+                <div class="lg:col-span-3 space-y-2.5 text-sm">
+                    <p class="text-xs font-extrabold uppercase tracking-widest text-sienna mb-3">Direct Captain Desk</p>
+                    <a href="https://wa.me/918423411692" target="_blank" class="font-serif text-3xl font-bold text-obsidian hover:text-sienna transition block">+91 84234 11692</a>
+                    <p class="text-obsidian/70 text-xs">hello@crossroadstravels.in</p>
+                    <p class="text-xs text-forest font-extrabold pt-1">✓ 24×7 WhatsApp Reservation Desk</p>
+                    <p class="text-xs text-obsidian/60 pt-1">Boarding Hubs: Delhi NCR, Chandigarh, Haridwar, Jaipur & Doorstep Family Pickup</p>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright & Editorial Sign-off -->
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-obsidian/60">
+                <p>© 2026 WHY-CATION (Crossroads Travels). All Rights Reserved. 100% Own Luxury Fleet.</p>
+                <p class="font-hand text-2xl text-sienna mt-2 sm:mt-0">"Safar khubsurat hai manzil se bhi..."</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL 1: Interactive 30-Second Vibe Matcher Quiz -->
+    <div id="vibeQuizModal" class="fixed inset-0 z-50 hidden bg-obsidian/70 backdrop-blur-sm flex items-center justify-center p-4" data-lenis-prevent>
+        <div class="bg-oat max-w-lg w-full rounded-[32px] border border-obsidian/15 p-6 sm:p-9 shadow-2xl">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-sienna">30-Second Matchmaker</span>
+                    <h3 class="font-serif text-3xl font-bold text-obsidian">Which of our 4 Routes fits you?</h3>
+                </div>
+                <button onclick="closeVibeQuiz()" class="w-10 h-10 rounded-full bg-linen flex items-center justify-center"><i class="ph-bold ph-x"></i></button>
+            </div>
+
+            <div class="space-y-4">
+                <p class="text-xs font-bold uppercase tracking-wider text-obsidian/60">What kind of mood are you craving right now?</p>
+                <button onclick="recommendRoute('manali')" class="w-full text-left p-4 rounded-2xl bg-milk hover:bg-forest hover:text-oat border border-obsidian/10 transition flex items-center justify-between group">
+                    <div>
+                        <span class="font-bold text-sm block">❄️ Snow Peaks, Riverside Cafes & Bonfire Jamming</span>
+                        <span class="text-xs opacity-70">Best for First-Time Solo Strangers & Friends</span>
+                    </div>
+                    <i class="ph-bold ph-caret-right"></i>
+                </button>
+                <button onclick="recommendRoute('rishikesh')" class="w-full text-left p-4 rounded-2xl bg-milk hover:bg-forest hover:text-oat border border-obsidian/10 transition flex items-center justify-between group">
+                    <div>
+                        <span class="font-bold text-sm block">🌊 White-Water Rafting & Short Himalayan Summit Trek</span>
+                        <span class="text-xs opacity-70">Best 4-Day Weekend Reset</span>
+                    </div>
+                    <i class="ph-bold ph-caret-right"></i>
+                </button>
+                <button onclick="recommendRoute('udaipur')" class="w-full text-left p-4 rounded-2xl bg-milk hover:bg-forest hover:text-oat border border-obsidian/10 transition flex items-center justify-between group">
+                    <div>
+                        <span class="font-bold text-sm block">👑 Sunset Lakes, Royal Forts & Heritage Comfort</span>
+                        <span class="text-xs opacity-70">Best for Families, Couples & Chill Groups</span>
+                    </div>
+                    <i class="ph-bold ph-caret-right"></i>
+                </button>
+                <button onclick="recommendRoute('spiti')" class="w-full text-left p-4 rounded-2xl bg-milk hover:bg-forest hover:text-oat border border-obsidian/10 transition flex items-center justify-between group">
+                    <div>
+                        <span class="font-bold text-sm block">🌌 High-Altitude Monasteries & Milky Way Stargazing</span>
+                        <span class="text-xs opacity-70">The Ultimate 7-Day Bucket-List Adventure</span>
+                    </div>
+                    <i class="ph-bold ph-caret-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Upgraded Multi-Tab Expedition Dossier Drawer (Itinerary, Stays & Packing) -->
+    <div id="itineraryModal" class="fixed inset-0 z-50 hidden bg-obsidian/70 backdrop-blur-sm flex items-center justify-center p-4" data-lenis-prevent>
+        <div class="bg-oat max-w-2xl w-full rounded-[32px] border border-obsidian/15 p-6 sm:p-10 max-h-[88vh] overflow-y-auto shadow-2xl">
+            <div class="flex justify-between items-start gap-4 border-b border-obsidian/10 pb-5">
+                <div>
+                    <span id="itinSubtitle" class="text-xs font-extrabold uppercase tracking-widest text-sienna">Expedition Blueprint</span>
+                    <h3 id="itinTitle" class="font-serif text-3xl sm:text-4xl font-bold text-obsidian mt-1">Route Name</h3>
+                </div>
+                <button onclick="closeItineraryModal()" class="w-10 h-10 rounded-full bg-linen hover:bg-sienna hover:text-white transition flex items-center justify-center">
+                    <i class="ph-bold ph-x"></i>
+                </button>
+            </div>
+
+            <!-- Multi-Tab Dossier Switcher -->
+            <div class="flex flex-wrap gap-2 mt-5">
+                <button onclick="switchModalTab('days')" id="mTab-days" class="px-4 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider bg-forest text-oat transition">Day-by-Day Plan</button>
+                <button onclick="switchModalTab('inclusions')" id="mTab-inclusions" class="px-4 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider bg-linen text-obsidian hover:bg-sienna hover:text-white transition">Stays & Inclusions</button>
+                <button onclick="switchModalTab('packing')" id="mTab-packing" class="px-4 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider bg-linen text-obsidian hover:bg-sienna hover:text-white transition">Packing Checklist</button>
+            </div>
+
+            <div id="itinDaysContainer" class="space-y-3.5 my-6">
+                <!-- Populated dynamically -->
+            </div>
+
+            <div class="bg-linen p-5 rounded-2xl flex flex-wrap items-center justify-between gap-4">
+                <div>
+                    <p class="text-xs font-extrabold text-forest uppercase tracking-wider">✓ Own Luxury Traveller Included</p>
+                    <p class="text-xs text-obsidian/70">Boutique Stays • Breakfast & Dinner • Bonfire • Captain</p>
+                </div>
+                <button id="itinBookBtn" class="bg-obsidian hover:bg-sienna text-oat px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition">
+                    Reserve Spot on This Route
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: Direct Booking / Invite Drawer -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden bg-obsidian/70 backdrop-blur-sm flex items-center justify-center p-4" data-lenis-prevent>
+        <div class="bg-oat max-w-lg w-full rounded-[32px] border border-obsidian/15 p-6 sm:p-9 shadow-2xl">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-sienna">Direct Traveller Reservation</span>
+                    <h3 class="font-serif text-3xl font-bold text-obsidian">Board With WHY-CATION</h3>
+                </div>
+                <button onclick="closeBookingDrawer()" class="w-10 h-10 rounded-full bg-linen flex items-center justify-center">
+                    <i class="ph-bold ph-x"></i>
+                </button>
+            </div>
+
+            <form onsubmit="submitBookingForm(event)" class="space-y-4 text-sm">
+                <div>
+                    <label class="block text-xs font-extrabold uppercase tracking-wider text-obsidian/70 mb-1">Selected Route / Quote</label>
+                    <input type="text" id="bookRouteInput" required class="w-full bg-milk border border-obsidian/15 rounded-xl px-4 py-3 font-bold text-forest">
+                </div>
+                <div class="grid sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-extrabold uppercase tracking-wider text-obsidian/70 mb-1">Your Name</label>
+                        <input type="text" id="bookUserName" required placeholder="e.g. Aditya Verma" class="w-full bg-milk border border-obsidian/15 rounded-xl px-4 py-3 text-obsidian">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-extrabold uppercase tracking-wider text-obsidian/70 mb-1">WhatsApp Number</label>
+                        <input type="tel" id="bookUserPhone" required placeholder="+91 98765..." class="w-full bg-milk border border-obsidian/15 rounded-xl px-4 py-3 text-obsidian">
+                    </div>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-extrabold uppercase tracking-wider text-obsidian/70 mb-1">Joining As</label>
+                        <select id="bookJoinType" class="w-full bg-milk border border-obsidian/15 rounded-xl px-3 py-3 text-obsidian font-semibold">
+                            <option value="Solo Stranger (1 Spot)">Solo Stranger (1 Spot)</option>
+                            <option value="Solo Female (Verified Safe Batch)">Solo Female (Verified Safe Batch)</option>
+                            <option value="Friends Trio / Squad (3-6 Spots)">Friends Trio / Squad (3-6 Spots)</option>
+                            <option value="Full Family Private Traveller Charter">Full Family Private Traveller Charter</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-extrabold uppercase tracking-wider text-obsidian/70 mb-1">Preferred Batch</label>
+                        <select id="bookBatchTime" class="w-full bg-milk border border-obsidian/15 rounded-xl px-3 py-3 text-obsidian font-semibold">
+                            <option value="This Friday Evening Batch">This Friday Evening Batch</option>
+                            <option value="Next Weekend Batch">Next Weekend Batch</option>
+                            <option value="Dec Christmas / New Year Batch">Dec Christmas / New Year Batch</option>
+                            <option value="Custom Family Dates">Custom Family Dates</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-[#25D366] hover:bg-obsidian text-white font-bold py-4 rounded-xl text-xs uppercase tracking-widest transition shadow-lg flex items-center justify-center gap-2">
+                    <i class="ph-fill ph-whatsapp-logo text-lg"></i>
+                    <span>Send Booking Inquiry on WhatsApp (+91 84234 11692)</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 4: Write a Review Modal -->
+    <div id="reviewModal" class="fixed inset-0 z-50 hidden bg-obsidian/70 backdrop-blur-sm flex items-center justify-center p-4" data-lenis-prevent>
+        <div class="bg-oat max-w-md w-full rounded-[32px] border border-obsidian/15 p-6 sm:p-8 shadow-2xl">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-serif text-2xl font-bold text-obsidian">Pin To Our Scrapbook</h3>
+                <button onclick="toggleReviewModal(false)" class="w-9 h-9 rounded-full bg-linen flex items-center justify-center"><i class="ph-bold ph-x"></i></button>
+            </div>
+            <form onsubmit="submitNewReview(event)" class="space-y-3.5 text-sm">
+                <input type="text" id="revAuthor" required placeholder="Your Name & Age (e.g., Riya Sen, 26)" class="w-full bg-milk border border-obsidian/15 rounded-xl px-4 py-3 text-obsidian">
+                <select id="revTrip" class="w-full bg-milk border border-obsidian/15 rounded-xl px-4 py-3 text-obsidian font-semibold">
+                    <option value="Solo Stranger • Manali & Sissu">Solo Stranger • Manali & Sissu</option>
+                    <option value="Solo Stranger • Spiti Valley">Solo Stranger • Spiti Valley</option>
+                    <option value="Friends Group • Rishikesh Chopta">Friends Group • Rishikesh Chopta</option>
+                    <option value="Family Private Charter • Udaipur">Family Private Charter • Udaipur</option>
+                </select>
+                <textarea id="revQuote" required rows="3" placeholder="Tell future travellers about our Luxury Traveller comfort and group vibe..." class="w-full bg-milk border border-obsidian/15 rounded-xl px-4 py-3 text-obsidian"></textarea>
+                <button type="submit" class="w-full bg-forest text-oat font-bold py-3.5 rounded-xl text-xs uppercase tracking-widest">Publish Story</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="luxuryToast" class="fixed top-24 right-6 z-50 hidden bg-obsidian text-oat px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3.5 max-w-sm border border-white/15">
+        <i class="ph-fill ph-seal-check text-2xl text-amber-300"></i>
+        <div>
+            <h5 id="toastTitle" class="font-bold text-sm">Request Confirmed</h5>
+            <p id="toastSub" class="text-xs text-oat/75">Our trip captain will message you on WhatsApp shortly.</p>
+        </div>
+    </div>
+
+    <script>
+        // 1. Initialize Lenis Smooth Inertia Scroll
+        let lenis;
+        if (typeof Lenis !== 'undefined') {
+            lenis = new Lenis({
+                duration: 1.25,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                smoothWheel: true
+            });
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    e.preventDefault();
+                    const el = document.querySelector(targetId);
+                    if (el) {
+                        if (lenis) lenis.scrollTo(el, { offset: -80 });
+                        else el.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Scroll Progress Bar Listener
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = height > 0 ? (winScroll / height) : 0;
+            document.getElementById('scrollProgress').style.transform = `scaleX(${scrolled})`;
+        });
+
+        // Hero Scene Switcher Data
+        const heroScenes = [
+            {
+                img: 'https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1000&q=85',
+                sub: 'Midnight at Sissu Bonfire —',
+                quote: '"Friday rat ko hum 12 anjaan log mile the. Monday subah ghar wapas aate waqt sabki aankhon me aansu the."'
+            },
+            {
+                img: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1000&q=85',
+                sub: 'Atal Tunnel & Sissu Snow Peak —',
+                quote: '"Pahado ki barf me jab 12 strangers ek saath snow-fight karte hain, toh saari thakan gayab ho jaati hai."'
+            },
+            {
+                img: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1000&q=85',
+                sub: 'Inside Our Maharaja Cruiser —',
+                quote: '"180° recliner seats, warm cove lighting aur raat bhar acoustic antakshari — zero broker bus hassle!"'
+            }
+        ];
+
+        function setHeroScene(idx) {
+            const s = heroScenes[idx];
+            document.getElementById('heroMainImg').src = s.img;
+            document.getElementById('heroSubCaption').innerText = s.sub;
+            document.getElementById('heroMainQuote').innerText = s.quote;
+            [0, 1, 2].forEach(i => {
+                const btn = document.getElementById(`hScene-${i}`);
+                btn.className = (i === idx)
+                    ? 'px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-sienna text-white shadow'
+                    : 'px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-white/20 backdrop-blur-md text-white hover:bg-white/30 transition';
+            });
+        }
+
+        // 2. 24-Hours Vibe Moments Data
+        const vibeMoments = [
+            {
+                badge: '📍 Boarding Point • Scented Warm Cabin',
+                time: 'Hour 01 • Breaking The Ice',
+                title: '"Shuru ke 20 minute sab shant hote hain, phir..."',
+                desc: 'Jaise hi aap humari Luxury Traveller me kadam rakhte hain, warm ambient lights aur coffee ki khushboo aapka darr khatam kar deti hai. Humara Trip Captain bina kisi awkwardness ke "2 Truths & 1 Lie" aur travel bingo shuru karwata hai — aur toll cross karne se pehle hi poori bus has rahi hoti hai.',
+                perks: 'Welcome Kit • Hydration Bar • Ice-Breaker Cards',
+                image: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1000&q=85'
+            },
+            {
+                badge: '📍 Murthal / Foothill Highway Halt • 01:30 AM',
+                time: 'Midnight • Kulhad Chai & Jamming',
+                title: '"90s Bollywood vs Indie Acoustic Wars"',
+                desc: 'Pahado ki thandi hawa shuru hote hi hum ek iconic foothill dhaba par garma-garam kulhad chai aur parathe ke liye rukte hain. Wapas Traveller me baith kar studio-tuned sound system par antakshari aur late-night jamming chalti hai.',
+                perks: 'Studio Cabin Audio • Recliner Blankets • Chai Halt',
+                image: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1000&q=85'
+            },
+            {
+                badge: '📍 Secret Mountain Viewpoint • 04:30 PM',
+                time: 'Day 02 & 03 • Shared Sunsets',
+                title: '"Koi akela nahi chalta, har kisi ke pass 11 dost hote hain"',
+                desc: 'Chahe Sissu waterfall ho, Tungnath ki choti ho ya Udaipur ki Pichola jheel — hum bheed-bhaad wale tourist points se hatkar secret cafes aur sunset trails par jate hain. Aapki candid photos lene ke liye 11 naye dost hamesha taiyaar rehte hain!',
+                perks: 'Polaroid Group Photos • Hidden Cafes • Zero Rush Pace',
+                image: 'https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1000&q=85'
+            },
+            {
+                badge: '📍 Boutique Mountain Camp • 11:00 PM',
+                time: 'Final Night • Under A Billion Stars',
+                title: '"Strangers on Friday. Family by Monday."',
+                desc: 'Pahado ki thand me jalte hue bonfire ke charo taraf baith kar jab zindagi ki kahaniyan aur sapne share hote hain, tab samajh aata hai ki WHY-CATION sirf ek trip nahi, ek therapy hai.',
+                perks: 'Private Bonfire • Acoustic Guitar • Lifelong Tribe',
+                image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=85'
+            }
+        ];
+
+        function switchVibeMoment(idx) {
+            const m = vibeMoments[idx];
+            document.getElementById('vibeStageImg').src = m.image;
+            document.getElementById('vibeStageBadge').innerText = m.badge;
+            document.getElementById('vibeStageTime').innerText = m.time;
+            document.getElementById('vibeStageTitle').innerText = m.title;
+            document.getElementById('vibeStageDesc').innerText = m.desc;
+            document.getElementById('vibeStagePerks').innerText = m.perks;
+
+            document.querySelectorAll('.vibe-tab').forEach((btn, i) => {
+                if (i === idx) {
+                    btn.className = 'vibe-tab text-left p-5 rounded-3xl bg-obsidian text-oat transition shadow-lg';
+                } else {
+                    btn.className = 'vibe-tab text-left p-5 rounded-3xl bg-milk hover:bg-linen text-obsidian border border-obsidian/10 transition';
+                }
+            });
+        }
+
+        // 3. The 4 Curated Domestic Expeditions Data (with Inclusions & Packing List)
+        const fourRoutes = [
+            {
+                id: 'manali',
+                edition: 'EDITION 01 • HIMACHAL OVERLAND',
+                title: 'Manali, Old Kasol & Sissu Snow Valley',
+                tags: ['stranger', 'family'],
+                badge: '#1 Bestseller for Solo Strangers',
+                duration: '5 Days / 4 Nights',
+                soloPrice: '₹11,999',
+                charterPrice: '₹1,12,000',
+                spotsLeft: 'Only 3 Spots Open',
+                batchMix: 'Current Batch: 6 Solo Strangers • 3 Friends • 3 Open',
+                image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1000&q=85',
+                summary: 'Cross the iconic Atal Tunnel into Sissu snow peaks, hop riverside cafes in Old Manali & Kasol, and jam around pinewood bonfires.',
+                highlights: ['Atal Tunnel & Sissu', 'Old Manali Cafe Crawl', 'Kasol Parvati River Camp', 'Bonfire & Acoustic Night'],
+                days: [
+                    'Day 01: Evening assembly & boarding our own Luxury Traveller. Ice-breaker bingo, midnight dhaba chai & overnight climb.',
+                    'Day 02: Check into boutique apple-orchard stay in Manali. Explore Hidimba cedar forest & sunset cafe hopping in Old Manali.',
+                    'Day 03: Drive through Atal Tunnel into Lahaul’s Sissu Snow Valley. Snow activities & evening acoustic bonfire session.',
+                    'Day 04: Scenic Parvati Valley drive to Kasol & Manikaran. Riverside luxury camp stay under starlit skies.',
+                    'Day 05: Slow mountain breakfast, Polaroid memory exchange & comfortable recliner journey back home.'
+                ],
+                inclusions: [
+                    'Round-trip transit in our own 12+1 Luxury Maharaja Tempo Traveller (zero broker buses).',
+                    '2 Nights Boutique Mountain View Stay in Manali + 1 Night Riverside Luxury Swiss Camp in Kasol.',
+                    '4 Breakfasts & 4 Dinners + 2 Private Acoustic Bonfire Sessions & Experienced Trip Captain.'
+                ],
+                packing: [
+                    'Heavy down jacket / windproof parka & 2 pairs of thermal inners.',
+                    'Waterproof ankle shoes, woollen socks, UV sunglasses & powerbank.'
+                ]
+            },
+            {
+                id: 'rishikesh',
+                edition: 'EDITION 02 • GARHWAL HIMALAYAS',
+                title: 'Rishikesh Rafting, Chopta & Tungnath Peak',
+                tags: ['stranger', 'family'],
+                badge: 'Ultimate 4-Day Weekend Reset',
+                duration: '4 Days / 3 Nights',
+                soloPrice: '₹8,499',
+                charterPrice: '₹79,000',
+                spotsLeft: '4 Spots Open',
+                batchMix: 'Current Batch: 5 Solo Strangers • 3 Friends • 4 Open',
+                image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1000&q=85',
+                summary: 'Conquer 16km white-water rapids on the emerald Ganges, sleep in Alpine meadows at Chopta, and summit Chandrashila at sunrise.',
+                highlights: ['16KM Ganges Rafting', 'Tungnath (Highest Shiva Temple)', 'Chandrashila 360° Sunrise', 'Deoriatal Mirror Lake'],
+                days: [
+                    'Day 01: Late-night boarding in our Luxury Cruiser. Overnight highway jamming and sunrise halt at Devprayag Sangam.',
+                    'Day 02: Short forest walk to Deoriatal Lake and check into Swiss camps amidst Chopta alpine meadows.',
+                    'Day 03: Guided trek to Tungnath & Chandrashila Summit (12,083 ft) for breathtaking views of Nanda Devi.',
+                    'Day 04: Thrilling 16km white-water rafting in Rishikesh, cliff jumping, Beatles Ashram cafe lunch & return.'
+                ],
+                inclusions: [
+                    'Entire journey in our own 12+1 Maharaja Cruiser with pushback loungers.',
+                    '2 Nights Alpine Swiss Camps in Chopta + 16KM Certified Ganga Rafting in Rishikesh.',
+                    '3 Breakfasts, 3 Dinners, Guided Summit Trek, Forest Permits & Bonfire.'
+                ],
+                packing: [
+                    'Good grip trekking shoes, fleece jacket, thermal inner & woollen beanie.',
+                    'Quick-dry t-shirt & shorts for river rafting + torch for sunrise trek.'
+                ]
+            },
+            {
+                id: 'udaipur',
+                edition: 'EDITION 03 • ROYAL MEWAR & HILLS',
+                title: 'Udaipur Lakes, Kumbhalgarh & Mount Abu',
+                tags: ['family', 'stranger'],
+                badge: 'Most Loved by Families & Squads',
+                duration: '4 Days / 3 Nights',
+                soloPrice: '₹10,499',
+                charterPrice: '₹96,000',
+                spotsLeft: 'Open for Batch & Family Charter',
+                batchMix: 'Available for Solo Batch & Full Family Private Bus',
+                image: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1000&q=85',
+                summary: 'Sunset boat rides on Lake Pichola, heritage haveli dinners, UNESCO fortress ramparts of Kumbhalgarh, and misty Mount Abu hills.',
+                highlights: ['Lake Pichola Private Boat', 'Bahubali Hills Golden Hour', 'Kumbhalgarh Great Wall', 'Mount Abu Nakki Lake'],
+                days: [
+                    'Day 01: Board our Chauffeur-driven Luxury Traveller with Rajasthani welcome treats and cinema screening on the move.',
+                    'Day 02: Arrival in Udaipur. Boutique heritage stay, City Palace, Gangaur Ghat & private sunset boat cruise on Lake Pichola.',
+                    'Day 03: Drive to the mighty Kumbhalgarh Fort (world’s second-longest wall) and ascend to cool Mount Abu hills.',
+                    'Day 04: Sunrise at Bahubali Hills overlooking Badi Lake, authentic Rajasthani thali & royal ride back.'
+                ],
+                inclusions: [
+                    'Chauffeur-driven round trip in our own 12+1 Luxury Cruiser.',
+                    '2 Nights Boutique Heritage Pool Hotel in Udaipur + 1 Night Resort in Mount Abu.',
+                    'Lake Pichola Sunset Boat Ride, Breakfasts & Royal Rooftop Dinners.'
+                ],
+                packing: [
+                    'Ethnic/fusion outfits for heritage Haveli photoshoots & sunset cruise.',
+                    'Light winter jacket for breezy Mount Abu evenings & walking sneakers.'
+                ]
+            },
+            {
+                id: 'spiti',
+                edition: 'EDITION 04 • THE MIDDLE LAND ODYSSEY',
+                title: 'Spiti Valley, Kaza & Chandratal Moon Lake',
+                tags: ['stranger'],
+                badge: 'Once-In-A-Lifetime Expedition',
+                duration: '7 Days / 6 Nights',
+                soloPrice: '₹18,999',
+                charterPrice: '₹1,68,000',
+                spotsLeft: 'Last 2 Spots Left',
+                batchMix: 'Current Batch: 8 Solo Explorers • 2 Friends • 2 Open',
+                image: 'https://images.unsplash.com/photo-1589802829985-817e51171b92?auto=format&fit=crop&w=1000&q=85',
+                summary: 'Cross Kunzum La pass, send a postcard from the world’s highest post office at Hikkim, and camp beside turquoise Chandratal Lake.',
+                highlights: ['Chandratal Moon Lake Camp', 'Key Monastery & Chicham Bridge', 'Hikkim Highest Post Office', 'Kalpa & Kinnaur Cliffs'],
+                days: [
+                    'Day 01-02: Ascend through Shimla and Kinnaur’s dramatic cliffside roads to Kalpa & Nako Lake in our high-torque Traveller.',
+                    'Day 03-04: Enter Spiti Valley. Explore 1000-year-old Tabo Monastery, Key Monastery, and Asia’s highest bridge at Chicham.',
+                    'Day 05: Visit iconic high-altitude villages of Langza (Buddha statue), Komic, and post a letter from Hikkim (14,567 ft).',
+                    'Day 06-07: Cross Kunzum La to camp near the magical Chandratal Lake, returning via Atal Tunnel & Manali.'
+                ],
+                inclusions: [
+                    'High-altitude expedition in our heated 12+1 Luxury Cruiser with Emergency Oxygen Cylinder.',
+                    '6 Nights stays in boutique hotels, authentic homestays & Chandratal camps.',
+                    '6 Breakfasts, 6 Dinners, All Inner-Line Permits & Veteran Spiti Captain.'
+                ],
+                packing: [
+                    '3-layer sub-zero protection (thermals, fleece mid-layer, -15°C down parka).',
+                    'Waterproof gloves, woollen socks, UV sunglasses, thermos flask & cold cream.'
+                ]
+            }
+        ];
+
+        function renderExpeditions(filter = 'all') {
+            const grid = document.getElementById('expeditionsGrid');
+            const list = filter === 'all' ? fourRoutes : fourRoutes.filter(r => r.tags.includes(filter));
+
+            grid.innerHTML = list.map(exp => `
+                <article onmouseenter="toggleCursor(true)" onmouseleave="toggleCursor(false)" class="luxury-card rounded-[36px] overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div onclick="openItineraryModal('${exp.id}')" class="relative h-72 sm:h-80 overflow-hidden cursor-pointer">
+                            <img src="${exp.image}" 
+                                 onerror="this.src='https://placehold.co/900x600/EFE9DE/161412?text=${encodeURIComponent(exp.title)}'"
+                                 alt="${exp.title}" class="w-full h-full object-cover hover:scale-105 transition duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-obsidian/75 via-transparent to-transparent"></div>
+                            <div class="absolute top-4 left-4 right-4 flex justify-between items-center">
+                                <span class="bg-oat/95 backdrop-blur-md text-obsidian text-[11px] font-extrabold uppercase tracking-wider px-4 py-1.5 rounded-full shadow-sm">
+                                    ${exp.badge}
+                                </span>
+                                <span class="bg-sienna text-white text-[11px] font-bold px-3.5 py-1.5 rounded-full shadow-sm">
+                                    ${exp.spotsLeft}
+                                </span>
+                            </div>
+                            <!-- Live Batch Mix Bar on Image Bottom -->
+                            <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs bg-obsidian/75 backdrop-blur-md px-4 py-2 rounded-full border border-white/15">
+                                <span class="font-semibold flex items-center gap-2">
+                                    <i class="ph-fill ph-users-three text-amber-300"></i>
+                                    ${exp.batchMix}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="p-7 sm:p-9">
+                            <div class="flex items-center justify-between text-xs font-extrabold uppercase tracking-widest text-sienna">
+                                <span>${exp.edition}</span>
+                                <span>${exp.duration}</span>
+                            </div>
+                            <h3 onclick="openItineraryModal('${exp.id}')" class="font-serif text-3xl sm:text-4xl font-bold text-obsidian mt-2 leading-tight hover:text-sienna cursor-pointer transition">
+                                ${exp.title}
+                            </h3>
+                            <p class="text-sm text-obsidian/75 mt-3 leading-relaxed">${exp.summary}</p>
+
+                            <div class="flex flex-wrap gap-2 mt-5">
+                                ${exp.highlights.map(h => `
+                                    <span class="text-xs font-bold px-3.5 py-1.5 rounded-full bg-linen text-obsidian/85">✦ ${h}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-7 pb-7 sm:px-9 sm:pb-9">
+                        <div class="pt-6 border-t border-obsidian/10 flex flex-wrap items-center justify-between gap-4">
+                            <div>
+                                <span class="text-[10px] font-extrabold uppercase tracking-wider text-obsidian/55 block">Solo / Group Batch Spot</span>
+                                <div class="flex items-baseline gap-1.5">
+                                    <span class="font-serif text-3xl sm:text-4xl font-bold text-obsidian">${exp.soloPrice}</span>
+                                    <span class="text-xs text-obsidian/60 font-semibold">/ person</span>
+                                </div>
+                                <span class="text-[11px] font-bold text-forest block mt-0.5">Full Family Private Bus Charter: ${exp.charterPrice}</span>
+                            </div>
+
+                            <div class="flex items-center gap-2.5">
+                                <button onclick="openItineraryModal('${exp.id}')" class="px-5 py-3.5 rounded-full bg-linen hover:bg-obsidian hover:text-white text-obsidian text-xs font-extrabold uppercase tracking-wider transition">
+                                    Full Dossier
+                                </button>
+                                <button onclick="openBookingDrawer('${exp.title}')" class="px-6 py-3.5 rounded-full bg-sienna hover:bg-obsidian text-white text-xs font-extrabold uppercase tracking-wider transition shadow-md">
+                                    Join Batch
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        function filterTrips(type, btn) {
+            renderExpeditions(type);
+            document.querySelectorAll('.trip-filter').forEach(b => {
+                b.className = 'trip-filter px-5 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-milk text-obsidian border border-obsidian/10 hover:bg-linen transition';
+            });
+            btn.className = 'trip-filter px-5 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-forest text-oat transition';
+        }
+
+        // Live Batch Calendar Data & Renderer
+        const batchSchedules = [
+            { month: 'nov', dates: 'Nov 20 – Nov 24, 2026', route: 'Manali, Old Kasol & Sissu Snow', status: 'Only 3 Spots Left', mix: '6 Solo Strangers • 3 Friends (65% Female)', price: '₹11,999', pill: 'bg-sienna text-white' },
+            { month: 'nov', dates: 'Nov 27 – Nov 30, 2026', route: 'Rishikesh Rafting & Chopta Summit', status: '4 Spots Open', mix: '5 Solo Strangers • 3 Friends Joined', price: '₹8,499', pill: 'bg-forest text-oat' },
+            { month: 'dec', dates: 'Dec 11 – Dec 14, 2026', route: 'Udaipur Lakes & Mount Abu Royal', status: 'Open for Solo & Family', mix: '4 Solo • 4 Friends • Charter Open', price: '₹10,499', pill: 'bg-forest text-oat' },
+            { month: 'dec', dates: 'Dec 24 – Dec 28, 2026', route: 'Christmas Edition: Manali & Sissu', status: 'Last 2 Spots Left', mix: '7 Solo Strangers • 3 Friends Joined', price: '₹12,999', pill: 'bg-sienna text-white' },
+            { month: 'dec', dates: 'Dec 29 – Jan 02, 2027', route: 'New Year Eve: Chopta & Rishikesh', status: 'Filling Fast • 3 Left', mix: '6 Solo Strangers • 3 Friends Joined', price: '₹9,999', pill: 'bg-sienna text-white' },
+            { month: 'jan', dates: 'Jan 09 – Jan 15, 2027', route: 'Winter Spiti Whiteout Expedition', status: '2 Explorer Seats Left', mix: '8 Solo Explorers • 2 Friends Joined', price: '₹18,999', pill: 'bg-obsidian text-oat' }
+        ];
+
+        function renderBatchCalendar(month = 'all') {
+            const grid = document.getElementById('batchCalendarGrid');
+            if (!grid) return;
+            const filtered = month === 'all' ? batchSchedules : batchSchedules.filter(b => b.month === month);
+            grid.innerHTML = filtered.map(b => `
+                <div class="luxury-card rounded-[30px] p-6 flex flex-col justify-between bg-milk">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span class="text-xs font-extrabold uppercase tracking-wider text-obsidian/60">📅 ${b.dates}</span>
+                            <span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider ${b.pill}">${b.status}</span>
+                        </div>
+                        <h4 class="font-serif text-2xl font-bold text-obsidian">${b.route}</h4>
+                        <p class="text-xs font-bold text-forest bg-sage/70 px-3 py-1.5 rounded-xl mt-3 inline-block">
+                            👥 ${b.mix}
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-obsidian/10 flex items-center justify-between">
+                        <div>
+                            <span class="text-[10px] font-extrabold uppercase text-obsidian/50 block">All-Inclusive Spot</span>
+                            <span class="font-serif text-2xl font-bold text-obsidian">${b.price}</span>
+                        </div>
+                        <button onclick="openBookingDrawer('${b.route} (${b.dates})')" class="bg-obsidian hover:bg-sienna text-oat px-5 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-wider transition">
+                            Hold Spot
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterBatchCalendar(month, btn) {
+            renderBatchCalendar(month);
+            document.querySelectorAll('.cal-tab').forEach(b => {
+                b.className = 'cal-tab px-5 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-milk text-obsidian border border-obsidian/10 hover:bg-linen transition';
+            });
+            btn.className = 'cal-tab px-5 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-obsidian text-oat transition';
+        }
+
+        // 4. Hero Travel Mode Switcher
+        function setHeroMode(mode) {
+            ['solo', 'friends', 'family'].forEach(m => {
+                const btn = document.getElementById(`hMode-${m}`);
+                if (m === mode) {
+                    btn.className = 'py-3 px-3 rounded-2xl text-xs font-extrabold uppercase tracking-wider bg-forest text-oat transition shadow-sm';
+                } else {
+                    btn.className = 'py-3 px-3 rounded-2xl text-xs font-extrabold uppercase tracking-wider bg-linen/70 text-obsidian/75 hover:bg-linen transition';
+                }
+            });
+
+            const box = document.getElementById('heroModeBox');
+            if (mode === 'solo') {
+                box.innerHTML = `<p class="text-xs text-obsidian/85 leading-relaxed"><strong class="text-forest">✦ 74% join completely solo!</strong> Age-matched 21–35 batch, zero-awkwardness highway ice-breakers, and verified female-safe luxury stays.</p><a href="#four-editions" class="text-xs font-extrabold uppercase tracking-wider text-sienna whitespace-nowrap hover:underline">Check Batches &rarr;</a>`;
+            } else if (mode === 'friends') {
+                box.innerHTML = `<p class="text-xs text-obsidian/85 leading-relaxed"><strong class="text-forest">✦ Bring your 3–6 friends!</strong> Skip tiring mountain driving, claim an instant 8% Squad Discount, and vibe with awesome co-travellers.</p><a href="#cruiser-hotspots" class="text-xs font-extrabold uppercase tracking-wider text-sienna whitespace-nowrap hover:underline">Squad Calculator &rarr;</a>`;
+            } else {
+                box.innerHTML = `<p class="text-xs text-obsidian/85 leading-relaxed"><strong class="text-forest">✦ 100% Private Family Traveller!</strong> Book our entire Chauffeur-driven Luxury Cruiser exclusively for your family with doorstep pickup.</p><a href="#cruiser-hotspots" class="text-xs font-extrabold uppercase tracking-wider text-sienna whitespace-nowrap hover:underline">Charter Rates &rarr;</a>`;
+            }
+        }
+
+        // 5. Interactive Hotspots on Our Luxury Traveller
+        const hotspotsData = [
+            {
+                tag: 'HOTSPOT 01 • BUSINESS-CLASS COMFORT',
+                title: '180° Maharaja Cloud Loungers',
+                desc: 'Generous legroom, calf-support & fresh hotel-grade warm blankets so 10-hour mountain climbs feel effortless.'
+            },
+            {
+                tag: 'HOTSPOT 02 • ACOUSTIC JAMMING LOUNGE',
+                title: 'Warm Mood Lighting & Studio Sound',
+                desc: 'Custom warm LED cove lighting and surround acoustic speakers built for midnight Spotify battles and unplugged guitar sessions.'
+            },
+            {
+                tag: 'HOTSPOT 03 • ON-BOARD CONCIERGE BAR',
+                title: 'Hydration Cooler, Charging & First-Aid',
+                desc: 'Dedicated fast-charging ports at every row, chilled water & coffee bar, motion-comfort kit, and portable altitude oxygen can.'
+            },
+            {
+                tag: 'HOTSPOT 04 • SAFETY & HILL EXPERTISE',
+                title: 'In-House Hill Captain & Live Family GPS',
+                desc: 'Driven by our own permanent veteran mountain pilot (never a grumpy broker driver) with live GPS tracking link for your parents.'
+            }
+        ];
+
+        function selectHotspot(index) {
+            const h = hotspotsData[index];
+            document.getElementById('hsTag').innerText = h.tag;
+            document.getElementById('hsTitle').innerText = h.title;
+            document.getElementById('hsDesc').innerText = h.desc;
+        }
+
+        // 6. Instant Trip & Charter Calculator
+        let calcStyle = 'solo';
+        function setCalcStyle(style) {
+            calcStyle = style;
+            ['solo', 'friends', 'family'].forEach(s => {
+                const b = document.getElementById(`cStyle-${s}`);
+                b.className = (s === style)
+                    ? 'c-style-btn py-3 px-2 rounded-2xl text-xs font-extrabold bg-forest text-oat transition'
+                    : 'c-style-btn py-3 px-2 rounded-2xl text-xs font-extrabold bg-linen text-obsidian hover:bg-obsidian/10 transition';
+            });
+
+            const range = document.getElementById('paxRange');
+            const sliderWrap = document.getElementById('paxSliderWrap');
+            if (style === 'solo') {
+                range.value = 1;
+                sliderWrap.classList.remove('hidden');
+            } else if (style === 'friends') {
+                range.value = 4;
+                sliderWrap.classList.remove('hidden');
+            } else {
+                sliderWrap.classList.add('hidden');
+            }
+            updateCalculator();
+        }
+
+        function updateCalculator() {
+            const select = document.getElementById('calcRoute');
+            const opt = select.options[select.selectedIndex];
+            const soloRate = parseInt(opt.getAttribute('data-solo'));
+            const charterRate = parseInt(opt.getAttribute('data-charter'));
+            const pax = parseInt(document.getElementById('paxRange').value);
+
+            document.getElementById('paxCountDisplay').innerText = pax === 1 ? '1 Solo Guest' : `${pax} Guests`;
+
+            const badgeEl = document.getElementById('calcBadge');
+            const totalEl = document.getElementById('calcTotal');
+            const perTextEl = document.getElementById('calcPerText');
+            const perksEl = document.getElementById('calcPerks');
+
+            if (calcStyle === 'family') {
+                badgeEl.innerText = 'Full Private Family Luxury Traveller Charter';
+                totalEl.innerText = '₹' + charterRate.toLocaleString('en-IN');
+                perTextEl.innerText = 'for entire 12-seater bus + stays';
+                perksEl.innerText = '100% private vehicle for your family, doorstep pickup, flexible halt timings & premium family suites.';
+            } else if (calcStyle === 'friends' || pax >= 4) {
+                const discountedPerHead = Math.round(soloRate * 0.92);
+                const total = discountedPerHead * pax;
+                badgeEl.innerText = 'Friends Squad Privilege (8% Group Discount Applied)';
+                totalEl.innerText = '₹' + total.toLocaleString('en-IN');
+                perTextEl.innerText = `total for ${pax} friends (₹${discountedPerHead.toLocaleString('en-IN')}/person)`;
+                perksEl.innerText = 'Includes Own Luxury Traveller, Boutique Stays, Meals, Bonfire & Trip Host.';
+            } else {
+                const total = soloRate * pax;
+                badgeEl.innerText = 'Solo Stranger All-Inclusive Pass';
+                totalEl.innerText = '₹' + total.toLocaleString('en-IN');
+                perTextEl.innerText = pax === 1 ? 'for 1 solo spot' : `total for ${pax} spots`;
+                perksEl.innerText = 'Age-matched verified batch, Own Luxury Traveller, Boutique Stays, Meals & Bonfire.';
+            }
+        }
+
+        function bookCalculatedPlan() {
+            const route = document.getElementById('calcRoute').value;
+            const price = document.getElementById('calcTotal').innerText;
+            openBookingDrawer(`${route} — ${calcStyle.toUpperCase()} (${price})`);
+        }
+
+        // 7. Verified Guestbook Reviews
+        const reviewsList = [
+            {
+                author: 'Aarushi Khanna, 25 • South Delhi',
+                trip: 'Solo Stranger • Manali & Sissu',
+                quote: 'Mere sare dosto ne last moment ditch kar diya tha. Maine darte-darte WHY-CATION ka solo batch join kiya. Inki khud ki Luxury Traveller itni royal aur clean thi, aur pehle hi ghante me hum 12 strangers aise ghul-mil gaye jaise college ke dost hon!'
+            },
+            {
+                author: 'Alex Will & Squad • Gurgaon',
+                trip: 'Friends Group • Rishikesh Chopta',
+                quote: 'Pahado me khud gaadi chala kar thakne se 100 guna behtar hai inki Luxury Traveller me jana. Raat bhar cabin me acoustic jamming hui, driver bhaiya super polite the aur Tungnath trek par humari poori gang ban gayi.'
+            },
+            {
+                author: 'Rajeshwari Singhania & Family (11 Pax) • Jaipur',
+                trip: 'Family Private Charter • Udaipur',
+                quote: 'Humne apni family ke liye inki puri Luxury Traveller charter ki thi. Kyunki gaadi inki apni hai (broker ki nahi), andar ki cleanliness, curtains, legroom aur hotels bilkul 5-star standard ke the. Parents bahut khush hue!'
+            }
+        ];
+
+        function renderReviews() {
+            const grid = document.getElementById('reviewsGrid');
+            grid.innerHTML = reviewsList.map(r => `
+                <div class="luxury-card rounded-[32px] p-8 flex flex-col justify-between bg-milk">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[11px] font-extrabold uppercase tracking-wider px-3.5 py-1 rounded-full bg-linen text-forest">${r.trip}</span>
+                            <span class="text-sienna text-sm">★★★★★</span>
+                        </div>
+                        <p class="font-serif italic text-xl sm:text-2xl text-obsidian leading-relaxed">"${r.quote}"</p>
+                    </div>
+                    <div class="pt-5 mt-6 border-t border-obsidian/10 flex items-center justify-between">
+                        <div>
+                            <h5 class="text-xs font-extrabold uppercase tracking-wider text-obsidian">${r.author}</h5>
+                            <span class="text-[11px] text-forest font-bold">✓ Verified WHY-CATION Traveller</span>
+                        </div>
+                        <i class="ph-duotone ph-seal-check text-2xl text-sienna"></i>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 8. Modals & Multi-Tab Dossier Controls
+        function openVibeQuiz() {
+            document.getElementById('vibeQuizModal').classList.remove('hidden');
+        }
+        function closeVibeQuiz() {
+            document.getElementById('vibeQuizModal').classList.add('hidden');
+        }
+        function recommendRoute(routeId) {
+            closeVibeQuiz();
+            openItineraryModal(routeId);
+        }
+
+        let currentModalRoute = null;
+        function openItineraryModal(id) {
+            const exp = fourRoutes.find(r => r.id === id);
+            if (!exp) return;
+            currentModalRoute = exp;
+            document.getElementById('itinSubtitle').innerText = `${exp.edition} • ${exp.duration}`;
+            document.getElementById('itinTitle').innerText = exp.title;
+            switchModalTab('days');
+            document.getElementById('itinBookBtn').onclick = () => {
+                closeItineraryModal();
+                openBookingDrawer(exp.title);
+            };
+            document.getElementById('itineraryModal').classList.remove('hidden');
+        }
+
+        function switchModalTab(tab) {
+            if (!currentModalRoute) return;
+            ['days', 'inclusions', 'packing'].forEach(t => {
+                document.getElementById(`mTab-${t}`).className = (t === tab)
+                    ? 'px-4 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider bg-forest text-oat transition'
+                    : 'px-4 py-2 rounded-full text-xs font-extrabold uppercase tracking-wider bg-linen text-obsidian hover:bg-sienna hover:text-white transition';
+            });
+
+            const container = document.getElementById('itinDaysContainer');
+            if (tab === 'days') {
+                container.innerHTML = currentModalRoute.days.map((d, i) => `
+                    <div class="p-4 rounded-2xl bg-milk border border-obsidian/10 flex gap-4 items-start">
+                        <span class="font-serif italic text-2xl font-bold text-sienna shrink-0">0${i + 1}</span>
+                        <p class="text-sm text-obsidian/85 leading-relaxed">${d}</p>
+                    </div>
+                `).join('');
+            } else if (tab === 'inclusions') {
+                container.innerHTML = currentModalRoute.inclusions.map(inc => `
+                    <div class="p-4 rounded-2xl bg-milk border border-obsidian/10 flex gap-3 items-center">
+                        <i class="ph-fill ph-check-circle text-forest text-xl shrink-0"></i>
+                        <p class="text-sm text-obsidian/85 font-semibold">${inc}</p>
+                    </div>
+                `).join('');
+            } else {
+                container.innerHTML = currentModalRoute.packing.map(pk => `
+                    <div class="p-4 rounded-2xl bg-milk border border-obsidian/10 flex gap-3 items-center">
+                        <i class="ph-fill ph-backpack text-sienna text-xl shrink-0"></i>
+                        <p class="text-sm text-obsidian/85 font-semibold">${pk}</p>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function closeItineraryModal() {
+            document.getElementById('itineraryModal').classList.add('hidden');
+        }
+
+        function openBookingDrawer(routeTitle) {
+            document.getElementById('bookRouteInput').value = routeTitle;
+            document.getElementById('bookingModal').classList.remove('hidden');
+        }
+        function closeBookingDrawer() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        function submitBookingForm(e) {
+            e.preventDefault();
+            const name = document.getElementById('bookUserName').value;
+            const userPhone = document.getElementById('bookUserPhone').value;
+            const route = document.getElementById('bookRouteInput').value;
+            const joinType = document.getElementById('bookJoinType').value;
+            const batchTime = document.getElementById('bookBatchTime').value;
+
+            const captainWhatsApp = "918423411692";
+            const message = `*WHY-CATION (CROSSROADS TRAVELS) — NEW TRIP INQUIRY* 🚐✨\n\n` +
+                            `👤 *Name:* ${name}\n` +
+                            `📱 *Phone:* ${userPhone}\n` +
+                            `🏔️ *Route/Quote:* ${route}\n` +
+                            `🎒 *Travel Mode:* ${joinType}\n` +
+                            `📅 *Batch:* ${batchTime}\n\n` +
+                            `Hi Captain! Mujhe is trip ki full itinerary aur booking details bhej dijiye.`;
+
+            const waUrl = `https://wa.me/${captainWhatsApp}?text=${encodeURIComponent(message)}`;
+            window.open(waUrl, '_blank');
+
+            closeBookingDrawer();
+            showLuxuryToast(`Opening WhatsApp, ${name}!`, `Connecting directly with Captain (+91 84234 11692).`);
+            e.target.reset();
+        }
+
+        function toggleReviewModal(show) {
+            document.getElementById('reviewModal').classList.toggle('hidden', !show);
+        }
+
+        function submitNewReview(e) {
+            e.preventDefault();
+            const author = document.getElementById('revAuthor').value;
+            const trip = document.getElementById('revTrip').value;
+            const quote = document.getElementById('revQuote').value;
+            reviewsList.unshift({ author, trip, quote });
+            renderReviews();
+            toggleReviewModal(false);
+            showLuxuryToast('Pinned to Scrapbook!', 'Thank you for sharing your WHY-CATION memory.');
+            e.target.reset();
+        }
+
+        function showLuxuryToast(title, sub) {
+            const toast = document.getElementById('luxuryToast');
+            document.getElementById('toastTitle').innerText = title;
+            document.getElementById('toastSub').innerText = sub;
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 4500);
+        }
+
+        // Custom Cursor Follower Logic
+        const cursorEl = document.getElementById('cursorFollower');
+        window.addEventListener('mousemove', (e) => {
+            if (cursorEl) {
+                cursorEl.style.left = e.clientX + 'px';
+                cursorEl.style.top = e.clientY + 'px';
+            }
+        });
+        function toggleCursor(active) {
+            if (cursorEl) cursorEl.classList.toggle('active', active);
+        }
+
+        // Scroll Reveal Observer
+        function initScrollReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+        }
+
+        window.onload = function() {
+            renderExpeditions('all');
+            renderBatchCalendar('all');
+            renderReviews();
+            updateCalculator();
+            initScrollReveal();
+        };
+    </script>
+</body>
+</html>
