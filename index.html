@@ -188,9 +188,12 @@
                 <i class="ph-fill ph-sparkle text-amber-300"></i>
                 WHY-CATION BY CROSSROADS TRAVELS • INDIA’S FIRST PRIVATE TRAVELLER STRANGER CLUB
             </span>
-            <div class="hidden md:flex items-center gap-5 text-oat/80">
-                <span>✦ 100% Own Luxury Vehicle (Zero Brokers)</span>
-                <span>✦ Solo Strangers • Friends • Family Charter</span>
+            <div class="hidden md:flex items-center gap-5 text-oat/85">
+                <span>✦ 100% Own Luxury Vehicle</span>
+                <a href="mailto:support@whycation.tours?subject=Expedition%20Inquiry%20%E2%80%94%20WHY-CATION" class="hover:text-amber-300 transition flex items-center gap-1.5 normal-case tracking-wider font-bold">
+                    <i class="ph-fill ph-envelope-simple text-amber-300"></i>
+                    <span>support@whycation.tours</span>
+                </a>
             </div>
         </div>
     </div>
@@ -203,7 +206,6 @@
             
             <!-- FAR LEFT: WHY-CATION BRAND LOGO (CLEAN SPACING, ZERO OVERLAP) -->
             <a href="/" class="flex items-center shrink-0 focus:outline-none group">
-                <!-- Loads your ./logo.jpg automatically if saved in folder -->
                 <img src="./logo.jpg" 
                      alt="WHY-CATION — Strangers Today. Stories Forever." 
                      class="h-14 sm:h-16 w-auto object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-[1.02]"
@@ -273,7 +275,7 @@
     </header>
 
     <!-- ============================================================================ -->
-    <!-- ORIGINAL HERO SECTION (100% PRESERVED + SCENE SWITCHER ENHANCEMENT)          -->
+    <!-- HERO SECTION                                                                 -->
     <!-- ============================================================================ -->
     <section class="relative pt-10 pb-20 lg:pt-16 lg:pb-28 border-b border-obsidian/10 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -339,7 +341,7 @@
                     </div>
                 </div>
 
-                <!-- Right Interactive Visual Collage (Exact Original Frame + Scene Switcher) -->
+                <!-- Right Interactive Visual Collage -->
                 <div class="lg:col-span-5 relative reveal-up">
                     <div class="relative mx-auto max-w-md">
                         <!-- Main Editorial Frame -->
@@ -518,9 +520,7 @@
         </div>
     </section>
 
-    <!-- ============================================================================ -->
-    <!-- NEW PRO SECTION: LIVE UPCOMING BATCH CALENDAR & TRIBE MIX TRACKER            -->
-    <!-- ============================================================================ -->
+    <!-- LIVE UPCOMING BATCH CALENDAR & TRIBE MIX TRACKER -->
     <section id="batch-calendar" class="py-20 lg:py-28 border-b border-obsidian/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 reveal-up">
@@ -575,22 +575,14 @@
                              alt="Luxury Traveller Cabin Experience" class="w-full h-full object-cover brightness-90">
                         <div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/20 to-transparent"></div>
 
-                        <!-- Hotspot 1: Recliner -->
-                        <button onclick="selectHotspot(0)" style="top: 38%; left: 26%;" class="hotspot-dot absolute w-9 h-9 rounded-full bg-sienna text-white font-extrabold text-xs flex items-center justify-center border-2 border-white shadow-xl hover:scale-110 transition">
-                            1
-                        </button>
-                        <!-- Hotspot 2: Acoustic Audio & Lighting -->
-                        <button onclick="selectHotspot(1)" style="top: 22%; left: 55%;" class="hotspot-dot absolute w-9 h-9 rounded-full bg-amber-400 text-obsidian font-extrabold text-xs flex items-center justify-center border-2 border-white shadow-xl hover:scale-110 transition">
-                            2
-                        </button>
-                        <!-- Hotspot 3: Hydration & Charging -->
-                        <button onclick="selectHotspot(2)" style="top: 58%; left: 68%;" class="hotspot-dot absolute w-9 h-9 rounded-full bg-sienna text-white font-extrabold text-xs flex items-center justify-center border-2 border-white shadow-xl hover:scale-110 transition">
-                            3
-                        </button>
-                        <!-- Hotspot 4: Hill Captain -->
-                        <button onclick="selectHotspot(3)" style="top: 45%; left: 84%;" class="hotspot-dot absolute w-9 h-9 rounded-full bg-emerald-400 text-obsidian font-extrabold text-xs flex items-center justify-center border-2 border-white shadow-xl hover:scale-110 transition">
-                            4
-                        </button>
+                        <!-- Hotspot 1 -->
+                        <button onclick="selectHotspot(0)" style="top: 38%; left: 26%;" class="hotspot-dot absolute w-9 h-9 rounded-full bg-sienna text-white font-extrabold text-xs flex items-center justify-center border-2 border-white shadow-xl hover:scale-110 transition">1</button>
+                        <!-- Hotspot 2 -->
+                        <button onclick="selectHotspot(1)" style="top: 22%; left: 55%;" class="hotspot-dot absolute w-9 h-9 rounded-full bg-amber-400 text-obsidian font-extrabold text-xs flex items-center justify-center border-2 border-white shadow-xl hover:scale-110 transition">2</button>
+                        <!-- Hotspot 3 -->
+                        <button onclick="selectHotspot(2)" style="top: 58%; left: 68%;" class="hotspot-dot absolute w-9 h-9 rounded-full bg-sienna text-white font-extrabold text-xs flex items-center justify-center border-2 border-white shadow-xl hover:scale-110 transition">3</button>
+                        <!-- Hotspot 4 -->
+                        <button onclick="selectHotspot(3)" style="top: 45%; left: 84%;" class="hotspot-dot absolute w-9 h-9 rounded-full bg-emerald-400 text-obsidian font-extrabold text-xs flex items-center justify-center border-2 border-white shadow-xl hover:scale-110 transition">4</button>
 
                         <!-- Active Hotspot Info Bar Inside Image -->
                         <div class="absolute bottom-4 left-4 right-4 bg-obsidian/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl border border-white/15 flex items-center justify-between gap-4">
@@ -677,7 +669,7 @@
                                 </p>
                                 <button onclick="bookCalculatedPlan()" class="mt-4 w-full bg-sienna hover:bg-obsidian text-white font-bold py-4 rounded-2xl text-xs uppercase tracking-widest transition shadow-lg flex items-center justify-center gap-2">
                                     <span>Lock This Quote & Get Itinerary</span>
-                                    <i class="ph-bold ph-whatsapp-logo text-base"></i>
+                                    <i class="ph-bold ph-arrow-up-right text-base"></i>
                                 </button>
                             </div>
                         </div>
@@ -790,28 +782,35 @@
     </section>
 
     <!-- ============================================================================ -->
-    <!-- UPGRADED PRO 5-COLUMN MAGAZINE MEGA-FOOTER                                   -->
+    <!-- UPGRADED PRO 5-COLUMN MAGAZINE MEGA-FOOTER WITH PREMIUM EMAIL CONCIERGE      -->
     <!-- ============================================================================ -->
     <footer class="bg-oat pt-20 pb-32 text-obsidian border-t border-obsidian/10 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             
-            <!-- Pre-Footer WhatsApp Itinerary Dossier Banner -->
+            <!-- Pre-Footer WhatsApp & Email Concierge Dossier Banner -->
             <div class="bg-forest text-oat rounded-[36px] p-8 sm:p-12 mb-16 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8 border border-white/10">
                 <div class="space-y-2 max-w-2xl">
-                    <span class="text-[11px] font-extrabold uppercase tracking-[0.22em] text-amber-300">2026–27 Expedition Lookbook</span>
+                    <span class="text-[11px] font-extrabold uppercase tracking-[0.22em] text-amber-300">2026–27 Expedition Lookbook & Private Desk</span>
                     <h3 class="font-serif text-3xl sm:text-5xl font-semibold leading-tight">
-                        Get All 4 Route PDFs & Cruiser Videos on WhatsApp.
+                        Get All 4 Route PDFs & Cruiser Videos Instantly.
                     </h3>
                     <p class="text-xs sm:text-sm text-oat/75">
-                        Direct day-by-day itinerary, boutique stay photos, and real cabin footage of our 12+1 Luxury Maharaja Traveller.
+                        Direct day-by-day itinerary, boutique stay photos, and real cabin footage of our 12+1 Luxury Maharaja Traveller via WhatsApp or Official Email.
                     </p>
                 </div>
-                <a href="https://wa.me/918423411692?text=Hi%20Why-Cation!%20Please%20send%20me%20the%204%20Route%20PDF%20Dossiers%20and%20Luxury%20Traveller%20videos." 
-                   target="_blank"
-                   class="bg-sienna hover:bg-amber-500 text-white px-8 py-4 rounded-full text-xs font-extrabold uppercase tracking-widest transition shadow-xl flex items-center gap-2.5 shrink-0">
-                    <i class="ph-fill ph-whatsapp-logo text-xl"></i>
-                    <span>Get Dossier on WhatsApp</span>
-                </a>
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0 w-full lg:w-auto">
+                    <a href="https://wa.me/918423411692?text=Hi%20Why-Cation!%20Please%20send%20me%20the%204%20Route%20PDF%20Dossiers%20and%20Luxury%20Traveller%20videos." 
+                       target="_blank"
+                       class="bg-sienna hover:bg-amber-500 text-white px-7 py-4 rounded-full text-xs font-extrabold uppercase tracking-widest transition shadow-xl flex items-center justify-center gap-2.5">
+                        <i class="ph-fill ph-whatsapp-logo text-xl"></i>
+                        <span>WhatsApp Dossier</span>
+                    </a>
+                    <a href="mailto:support@whycation.tours?subject=Request%20for%202026%20Expedition%20Dossier%20%26%20Tariff&body=Hi%20WHY-CATION%20Concierge%20Team%2C%0A%0APlease%20share%20the%20itinerary%20PDFs%20and%20upcoming%20batch%20details%20for%3A%0A-%20Preferred%20Route%3A%20%0A-%20Travel%20Mode%20(Solo%20%2F%20Friends%20%2F%20Family%20Charter)%3A%20%0A-%20Preferred%20Dates%3A%20%0A%0AThank%20you!" 
+                       class="bg-white/10 hover:bg-white hover:text-obsidian text-oat border border-white/20 px-7 py-4 rounded-full text-xs font-extrabold uppercase tracking-widest transition flex items-center justify-center gap-2.5 backdrop-blur-md">
+                        <i class="ph-fill ph-envelope-open text-lg text-amber-300"></i>
+                        <span>Email Concierge</span>
+                    </a>
+                </div>
             </div>
 
             <!-- 5-Column Architectural Footer Grid -->
@@ -854,13 +853,24 @@
                     <a href="#cruiser-hotspots" class="block hover:text-sienna transition font-medium">Family Bus Charter</a>
                 </div>
 
-                <!-- Col 4: Direct Captain Desk (3 cols) -->
-                <div class="lg:col-span-3 space-y-2.5 text-sm">
-                    <p class="text-xs font-extrabold uppercase tracking-widest text-sienna mb-3">Direct Captain Desk</p>
+                <!-- Col 4: Direct Captain & Official Email Desk (3 cols) -->
+                <div class="lg:col-span-3 space-y-3 text-sm">
+                    <p class="text-xs font-extrabold uppercase tracking-widest text-sienna mb-2">Direct Captain & Email Desk</p>
                     <a href="https://wa.me/918423411692" target="_blank" class="font-serif text-3xl font-bold text-obsidian hover:text-sienna transition block">+91 84234 11692</a>
-                    <p class="text-obsidian/70 text-xs">hello@crossroadstravels.in</p>
-                    <p class="text-xs text-forest font-extrabold pt-1">✓ 24×7 WhatsApp Reservation Desk</p>
-                    <p class="text-xs text-obsidian/60 pt-1">Boarding Hubs: Delhi NCR, Chandigarh, Haridwar, Jaipur & Doorstep Family Pickup</p>
+                    
+                    <!-- Premium Official Email Card -->
+                    <div class="p-3 rounded-2xl bg-milk border border-obsidian/10 shadow-sm flex items-center justify-between gap-2 group hover:border-sienna/40 transition">
+                        <a href="mailto:support@whycation.tours?subject=Trip%20Inquiry%20%E2%80%94%20WHY-CATION" class="flex items-center gap-2 text-xs font-extrabold text-obsidian hover:text-sienna transition truncate">
+                            <i class="ph-fill ph-envelope-simple text-sienna text-base shrink-0"></i>
+                            <span class="truncate">support@whycation.tours</span>
+                        </a>
+                        <button type="button" onclick="copyOfficialEmail()" title="Copy Email Address" class="px-2.5 py-1 rounded-lg bg-linen hover:bg-obsidian hover:text-oat text-[10px] font-extrabold uppercase tracking-wider text-obsidian transition shrink-0">
+                            Copy
+                        </button>
+                    </div>
+
+                    <p class="text-xs text-forest font-extrabold pt-0.5">✓ 24×7 WhatsApp & Priority Email Desk</p>
+                    <p class="text-xs text-obsidian/60">Boarding Hubs: Delhi NCR, Chandigarh, Haridwar, Jaipur & Doorstep Family Pickup</p>
                 </div>
 
             </div>
@@ -918,7 +928,7 @@
         </div>
     </div>
 
-    <!-- MODAL 2: Upgraded Multi-Tab Expedition Dossier Drawer (Itinerary, Stays & Packing) -->
+    <!-- MODAL 2: Upgraded Multi-Tab Expedition Dossier Drawer -->
     <div id="itineraryModal" class="fixed inset-0 z-50 hidden bg-obsidian/70 backdrop-blur-sm flex items-center justify-center p-4" data-lenis-prevent>
         <div class="bg-oat max-w-2xl w-full rounded-[32px] border border-obsidian/15 p-6 sm:p-10 max-h-[88vh] overflow-y-auto shadow-2xl">
             <div class="flex justify-between items-start gap-4 border-b border-obsidian/10 pb-5">
@@ -954,7 +964,7 @@
         </div>
     </div>
 
-    <!-- MODAL 3: Direct Booking / Invite Drawer -->
+    <!-- MODAL 3: Direct Booking / Invite Drawer (WhatsApp + Official Email Concierge) -->
     <div id="bookingModal" class="fixed inset-0 z-50 hidden bg-obsidian/70 backdrop-blur-sm flex items-center justify-center p-4" data-lenis-prevent>
         <div class="bg-oat max-w-lg w-full rounded-[32px] border border-obsidian/15 p-6 sm:p-9 shadow-2xl">
             <div class="flex justify-between items-center mb-6">
@@ -978,7 +988,7 @@
                         <input type="text" id="bookUserName" required placeholder="e.g. Aditya Verma" class="w-full bg-milk border border-obsidian/15 rounded-xl px-4 py-3 text-obsidian">
                     </div>
                     <div>
-                        <label class="block text-xs font-extrabold uppercase tracking-wider text-obsidian/70 mb-1">WhatsApp Number</label>
+                        <label class="block text-xs font-extrabold uppercase tracking-wider text-obsidian/70 mb-1">WhatsApp / Phone</label>
                         <input type="tel" id="bookUserPhone" required placeholder="+91 98765..." class="w-full bg-milk border border-obsidian/15 rounded-xl px-4 py-3 text-obsidian">
                     </div>
                 </div>
@@ -1002,10 +1012,16 @@
                         </select>
                     </div>
                 </div>
-                <button type="submit" class="w-full bg-[#25D366] hover:bg-obsidian text-white font-bold py-4 rounded-xl text-xs uppercase tracking-widest transition shadow-lg flex items-center justify-center gap-2">
-                    <i class="ph-fill ph-whatsapp-logo text-lg"></i>
-                    <span>Send Booking Inquiry on WhatsApp (+91 84234 11692)</span>
-                </button>
+                <div class="space-y-2.5 pt-1">
+                    <button type="submit" class="w-full bg-[#25D366] hover:bg-obsidian text-white font-bold py-4 rounded-xl text-xs uppercase tracking-widest transition shadow-lg flex items-center justify-center gap-2">
+                        <i class="ph-fill ph-whatsapp-logo text-lg"></i>
+                        <span>Confirm via WhatsApp (+91 84234 11692)</span>
+                    </button>
+                    <button type="button" onclick="submitBookingEmail()" class="w-full bg-milk hover:bg-forest hover:text-oat text-obsidian border border-obsidian/15 font-bold py-3.5 rounded-xl text-xs uppercase tracking-widest transition flex items-center justify-center gap-2">
+                        <i class="ph-fill ph-envelope-simple text-base text-sienna"></i>
+                        <span>Send Official Mail to support@whycation.tours</span>
+                    </button>
+                </div>
             </form>
         </div>
     </div>
@@ -1036,7 +1052,7 @@
         <i class="ph-fill ph-seal-check text-2xl text-amber-300"></i>
         <div>
             <h5 id="toastTitle" class="font-bold text-sm">Request Confirmed</h5>
-            <p id="toastSub" class="text-xs text-oat/75">Our trip captain will message you on WhatsApp shortly.</p>
+            <p id="toastSub" class="text-xs text-oat/75">Our trip captain will message you shortly.</p>
         </div>
     </div>
 
@@ -1078,6 +1094,12 @@
             const scrolled = height > 0 ? (winScroll / height) : 0;
             document.getElementById('scrollProgress').style.transform = `scaleX(${scrolled})`;
         });
+
+        // Copy Official Email Helper
+        function copyOfficialEmail() {
+            navigator.clipboard.writeText('support@whycation.tours');
+            showLuxuryToast('Email Address Copied!', 'support@whycation.tours copied to clipboard.');
+        }
 
         // Hero Scene Switcher Data
         const heroScenes = [
@@ -1165,7 +1187,7 @@
             });
         }
 
-        // 3. The 4 Curated Domestic Expeditions Data (with Inclusions & Packing List)
+        // 3. The 4 Curated Domestic Expeditions Data
         const fourRoutes = [
             {
                 id: 'manali',
@@ -1310,7 +1332,6 @@
                                     ${exp.spotsLeft}
                                 </span>
                             </div>
-                            <!-- Live Batch Mix Bar on Image Bottom -->
                             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs bg-obsidian/75 backdrop-blur-md px-4 py-2 rounded-full border border-white/15">
                                 <span class="font-semibold flex items-center gap-2">
                                     <i class="ph-fill ph-users-three text-amber-300"></i>
@@ -1372,8 +1393,8 @@
 
         // Live Batch Calendar Data & Renderer
         const batchSchedules = [
-            { month: 'nov', dates: 'Nov 20 – Nov 24, 2026', route: 'Manali, Old Kasol & Sissu Snow', status: 'Only 3 Spots Left', mix: '6 Solo Strangers • 3 Friends (65% Female)', price: '₹11,999', pill: 'bg-sienna text-white' },
-            { month: 'nov', dates: 'Nov 27 – Nov 30, 2026', route: 'Rishikesh Rafting & Chopta Summit', status: '4 Spots Open', mix: '5 Solo Strangers • 3 Friends Joined', price: '₹8,499', pill: 'bg-forest text-oat' },
+            { month: 'nov', dates: 'Nov 27 – Dec 01, 2026', route: 'Manali, Old Kasol & Sissu Snow', status: 'Only 3 Spots Left', mix: '6 Solo Strangers • 3 Friends (65% Female)', price: '₹11,999', pill: 'bg-sienna text-white' },
+            { month: 'nov', dates: 'Nov 28 – Dec 01, 2026', route: 'Rishikesh Rafting & Chopta Summit', status: '4 Spots Open', mix: '5 Solo Strangers • 3 Friends Joined', price: '₹8,499', pill: 'bg-forest text-oat' },
             { month: 'dec', dates: 'Dec 11 – Dec 14, 2026', route: 'Udaipur Lakes & Mount Abu Royal', status: 'Open for Solo & Family', mix: '4 Solo • 4 Friends • Charter Open', price: '₹10,499', pill: 'bg-forest text-oat' },
             { month: 'dec', dates: 'Dec 24 – Dec 28, 2026', route: 'Christmas Edition: Manali & Sissu', status: 'Last 2 Spots Left', mix: '7 Solo Strangers • 3 Friends Joined', price: '₹12,999', pill: 'bg-sienna text-white' },
             { month: 'dec', dates: 'Dec 29 – Jan 02, 2027', route: 'New Year Eve: Chopta & Rishikesh', status: 'Filling Fast • 3 Left', mix: '6 Solo Strangers • 3 Friends Joined', price: '₹9,999', pill: 'bg-sienna text-white' },
@@ -1671,6 +1692,29 @@
             closeBookingDrawer();
             showLuxuryToast(`Opening WhatsApp, ${name}!`, `Connecting directly with Captain (+91 84234 11692).`);
             e.target.reset();
+        }
+
+        // Send Booking Inquiry via Official Email (support@whycation.tours)
+        function submitBookingEmail() {
+            const name = document.getElementById('bookUserName').value || 'Guest Traveller';
+            const userPhone = document.getElementById('bookUserPhone').value || 'Not provided';
+            const route = document.getElementById('bookRouteInput').value;
+            const joinType = document.getElementById('bookJoinType').value;
+            const batchTime = document.getElementById('bookBatchTime').value;
+
+            const subject = `WHY-CATION Reservation Inquiry: ${route} — ${name}`;
+            const body = `Hi WHY-CATION Concierge Team,\n\n` +
+                         `I would like to request the detailed itinerary PDF and seat availability for the following expedition:\n\n` +
+                         `• Guest Name: ${name}\n` +
+                         `• Contact / WhatsApp: ${userPhone}\n` +
+                         `• Selected Route / Quote: ${route}\n` +
+                         `• Travel Mode: ${joinType}\n` +
+                         `• Preferred Batch: ${batchTime}\n\n` +
+                         `Looking forward to hearing from you.\n\nWarm regards,\n${name}`;
+
+            window.location.href = `mailto:support@whycation.tours?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            closeBookingDrawer();
+            showLuxuryToast('Opening Your Email App!', 'Drafted directly to support@whycation.tours.');
         }
 
         function toggleReviewModal(show) {
